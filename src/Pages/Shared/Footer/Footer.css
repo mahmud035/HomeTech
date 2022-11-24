@@ -1,0 +1,9 @@
+.footer-container {
+  background-color: #1d3e53;
+  color: #fff;
+}
+
+.footer p {
+  margin-bottom: 6px;
+  cursor: pointer;
+}
