@@ -96,6 +96,34 @@ const SignUp = () => {
       });
   };
 
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success('Account Created successfully');
+
+        navigate('/');
+      })
+      .catch((error) => {
+        toast.error(error.message.slice(22, -2));
+      });
+  };
+
+  const handleGithubSignIn = () => {
+    githubSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success('Account Created successfully');
+
+        navigate('/');
+      })
+      .catch((error) => {
+        toast.error(error.message.slice(22, -2));
+      });
+  };
+
   return (
     <div className="register-page-container">
       <div className="container form-page pt-5 pb-5">
@@ -203,6 +231,7 @@ const SignUp = () => {
           <div className="text-center py-3">
             <ButtonGroup vertical>
               <Button
+                onClick={handleGoogleSignIn}
                 className="mb-3 rounded text-white"
                 variant="outline-info"
               >
@@ -210,7 +239,11 @@ const SignUp = () => {
                 <span>Continue with Google</span>
               </Button>
 
-              <Button className=" rounded text-white" variant="outline-dark">
+              <Button
+                onClick={handleGithubSignIn}
+                className=" rounded text-white"
+                variant="outline-dark"
+              >
                 <BsGithub size={20} className="me-3 mb-1" />
                 <span>Continue with Github</span>
               </Button>
