@@ -1,0 +1,20 @@
+.category-card-container {
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+  gap: 1.5rem;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+}
+
+@media (min-width: 501px) and (max-width: 730px) {
+  .category-card-container {
+    grid-template-columns: 200px 200px;
+  }
+}
+
+@media (max-width: 500px) {
+  .category-card-container {
+    grid-template-columns: 300px;
+  }
+}
