@@ -28,9 +28,9 @@ const SignUp = () => {
   }, []);
 
   const handleSignUp = (data) => {
-    console.log(data);
+    // console.log(data);
     const image = data.image[0];
-    console.log(image);
+    // console.log(image);
 
     //* Image Upload to Imgbb Server
     const formData = new FormData();
@@ -41,15 +41,58 @@ const SignUp = () => {
     fetch(url, { method: 'POST', body: formData })
       .then((res) => res.json())
       .then((imageData) => {
-        console.log(imageData);
+        // console.log(imageData);
         if (imageData.success) {
           const imageURL = imageData?.data?.display_url;
-          console.log(imageURL);
+
+          //* Create User
+          createUser(data.email, data.password)
+            .then((result) => {
+              const user = result.user;
+              console.log(user);
+              toast.success('Account Created Successfully');
+
+              const userInfo = {
+                displayName: data.name,
+                photoURL: imageURL,
+              };
+
+              //* Update User Information / Profile
+              updateUser(userInfo)
+                .then(() => {
+                  //* Save user information to database
+                  saveUser(data.name, data.email);
+                })
+                .catch((error) => {
+                  toast.error(error.message.slice(22, -2));
+                });
+            })
+            .catch((error) => {
+              console.log(error);
+              toast.error(error.message.slice(22, -2));
+            });
         }
 
         if (imageData.error) {
           toast.info('Please upload .jpg /.jpeg /.png type image');
         }
+      });
+  };
+
+  const saveUser = (name, email) => {
+    const user = { name, email };
+    console.log(user);
+
+    fetch('http://localhost:5000/users', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('SavedUser:', data);
       });
   };
 
