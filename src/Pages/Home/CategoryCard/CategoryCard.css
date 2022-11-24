@@ -3,6 +3,11 @@
   width: 100%;
   padding: 2rem;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.category-card:hover {
+  transform: scale(1.03);
 }
 
 .category-card img {
