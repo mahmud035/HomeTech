@@ -1,6 +1,12 @@
 .product-card-container {
   display: grid;
-  grid-template-columns: 750px;
+  grid-template-columns: 720px;
   gap: 1.5rem;
   justify-content: center;
+}
+
+@media (max-width: 767px) {
+  .product-card-container {
+    grid-template-columns: 90%;
+  }
 }
