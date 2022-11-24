@@ -220,7 +220,7 @@ const SignUp = () => {
             </Button>
           </Form>
 
-          <div className="social-accounts-sign-up">
+          <div className="d-flex gap-3 align-items-center social-accounts-sign-up">
             <p></p>
             <p className="text-center">
               <small className="fw-semibold">Or</small>

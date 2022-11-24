@@ -6,10 +6,16 @@ import { AuthContext } from '../../context/AuthProvider';
 import { toast } from 'react-toastify';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useSetTitle from '../../hooks/useSetTitle';
+import { useForm } from 'react-hook-form';
 
 const Login = () => {
-  const { logIn, passwordReset } = useContext(AuthContext);
-  const [userEmail, setUserEmail] = useState('');
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+  const { user, signIn, passwordReset } = useContext(AuthContext);
+  const [loginUserEmail, setLoginUserEmail] = useState('');
   useSetTitle('Login');
 
   useEffect(() => {
@@ -19,24 +25,25 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  let from = location.state?.from?.pathname || '/';
+  const from = location?.state?.from?.pathname || '/';
+  console.log(from);
 
-  const handleSubmit = (e) => {
+  const handleLogin = (data, e) => {
     e.preventDefault();
 
-    const form = e.target;
+    console.log(data);
+    const email = data.email;
+    const password = data.password;
 
-    const email = form.email.value;
-    const password = form.password.value;
-
-    logIn(email, password)
+    //* Sign In
+    signIn(email, password)
       .then((result) => {
         const user = result.user;
+        console.log(user);
+        toast.success('Logged in successfully');
 
-        // console.log(user);
-        toast.success('Login Successfully');
-
-        navigate(from, { replace: true });
+        setLoginUserEmail(email);
+        e.target.reset();
       })
       .catch((error) => {
         toast.error(error.message.slice(22, -2));
@@ -45,15 +52,21 @@ const Login = () => {
 
   // console.log(userEmail);
   const handlePasswordReset = () => {
-    console.log(userEmail);
-    passwordReset(userEmail)
+    console.log(loginUserEmail);
+    passwordReset(loginUserEmail)
       .then(() => {
-        toast.info('Password reset email sent!');
+        toast.info('Please check your email to reset your password');
       })
       .catch((error) => {
         toast.error(error.message);
       });
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [user, from, navigate]);
 
   return (
     <div className="login-page-container">
@@ -63,26 +76,46 @@ const Login = () => {
             <h2>Sign In</h2>
             <p className=" text-white-50">Sign in to access your account</p>
           </div>
-          <Form onSubmit={handleSubmit} className=" d-flex flex-column p-4 ">
+          <Form
+            onSubmit={handleSubmit(handleLogin)}
+            className=" d-flex flex-column p-4 "
+          >
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label className="fw-semibold">Email address</Form.Label>
+              <Form.Label className="fw-semibold">Email </Form.Label>
               <Form.Control
-                onChange={(e) => setUserEmail(e.target.value)}
+                {...register('email', { required: 'Email is required' })}
                 type="email"
-                name="email"
                 placeholder="Enter email"
-                required
               />
+
+              {errors.email && (
+                <p className="text-danger mb-0">{errors.email?.message}</p>
+              )}
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label className="fw-semibold">Password</Form.Label>
               <Form.Control
+                {...register('password', {
+                  required: 'Password is required',
+                  minLength: {
+                    value: 6,
+                    message:
+                      'Password must be at least 6 characters (one special case, one digit, one lowercase letter)',
+                  },
+                  pattern: {
+                    value: /(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                    message:
+                      'Password must be one special case, one digit, one lowercase letter',
+                  },
+                })}
                 type="password"
-                name="password"
-                placeholder="Password"
-                required
+                placeholder="******"
               />
+
+              {errors.password && (
+                <p className="text-danger mb-0">{errors.password?.message}</p>
+              )}
             </Form.Group>
 
             <Button
