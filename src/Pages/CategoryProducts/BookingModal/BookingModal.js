@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 const BookingModal = ({ show, product, setProduct }) => {
   const { user } = useContext(AuthContext);
-  const { name, resalePrice } = product;
+  const { name, resalePrice, image } = product;
   const {
     register,
     formState: { errors },
@@ -19,6 +19,7 @@ const BookingModal = ({ show, product, setProduct }) => {
     // console.log(data);
 
     const booking = {
+      image: image,
       productName: data.productName,
       resalePrice: data.resalePrice,
       userName: data.userName,
@@ -144,11 +145,6 @@ const BookingModal = ({ show, product, setProduct }) => {
             </Button>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={() => setProduct(null)} variant="secondary">
-            Close
-          </Button>
-        </Modal.Footer>
       </Modal>
     </div>
   );

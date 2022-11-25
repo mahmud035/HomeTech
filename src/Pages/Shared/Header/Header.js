@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import './Header.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -113,7 +113,7 @@ const Header = () => {
                   <NavLink to="/blog">Blog</NavLink>
                   {user?.email && (
                     <>
-                      <NavLink to="">Dashboard</NavLink>
+                      <NavLink to="/dashboard">Dashboard</NavLink>
                     </>
                   )}
                 </Nav>

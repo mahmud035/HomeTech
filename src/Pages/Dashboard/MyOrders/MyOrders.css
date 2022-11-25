@@ -1,0 +1,18 @@
+.order-product-card-container {
+  display: grid;
+  grid-template-columns: 320px 320px 320px;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+@media (min-width: 992px) and (max-width: 1439px) {
+  .order-product-card-container {
+    grid-template-columns: 320px 320px;
+  }
+}
+
+@media (max-width: 991px) {
+  .order-product-card-container {
+    grid-template-columns: 320px;
+  }
+}
