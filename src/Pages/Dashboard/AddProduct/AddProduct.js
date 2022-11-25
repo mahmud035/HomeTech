@@ -26,25 +26,64 @@ const AddProduct = () => {
         >
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label className="fw-semibold">Product Name </Form.Label>
-            <Form.Control {...register('productName')} readOnly type="text" />
+            <Form.Control
+              {...register('name', { required: 'Product Name is required' })}
+              type="text"
+            />
+
+            {errors.name && (
+              <small className="text-danger mb-0">{errors.name?.message}</small>
+            )}
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label className="fw-semibold">Product Category </Form.Label>
-            <Form.Control {...register('categoryName')} readOnly type="text" />
+            <Form.Control
+              {...register('categoryName', {
+                required: 'Category Name is required',
+              })}
+              type="text"
+            />
+
+            {errors.categoryName && (
+              <small className="text-danger mb-0">
+                {errors.categoryName?.message}
+              </small>
+            )}
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label className="fw-semibold">Price </Form.Label>
-            <Form.Control {...register('resalePrice')} readOnly type="number" />
+            <Form.Control
+              {...register('resalePrice', { required: 'Price is required' })}
+              readOnly
+              type="number"
+            />
+
+            {errors.resalePrice && (
+              <small className="text-danger mb-0">
+                {errors.resalePrice?.message}
+              </small>
+            )}
           </Form.Group>
 
           <Form.Label className="fw-semibold"> Condition</Form.Label>
-          <Form.Select className="mb-3" aria-label="Default select example">
+          <Form.Select
+            {...register('productCondition', {
+              required: 'Product condition is required',
+            })}
+            className="mb-3"
+            aria-label="Default select example"
+          >
             <option value="1">Excellent</option>
             <option value="2">Good</option>
             <option value="3">Fair</option>
           </Form.Select>
+          {errors.productCondition && (
+            <small className="text-danger mb-0">
+              {errors.productCondition?.message}
+            </small>
+          )}
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label className="fw-semibold">Phone No </Form.Label>
@@ -71,16 +110,27 @@ const AddProduct = () => {
               type="text"
             />
 
-            {errors.meetingLocation && (
+            {errors.location && (
               <small className="text-danger mb-0">
-                {errors.meetingLocation?.message}
+                {errors.location?.message}
               </small>
             )}
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label className="fw-semibold">Purchase Year </Form.Label>
-            <Form.Control {...register('yearOfPurchase')} type="text" />
+            <Form.Control
+              {...register('yearOfPurchase', {
+                required: 'Purchase year is required',
+              })}
+              type="text"
+            />
+
+            {errors.yearOfPurchase && (
+              <small className="text-danger mb-0">
+                {errors.yearOfPurchase?.message}
+              </small>
+            )}
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
