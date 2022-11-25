@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import './ProductCard.css';
 import { MdVerifiedUser } from 'react-icons/md';
+import { Button } from 'react-bootstrap';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, setProduct, setModalShow }) => {
   const {
     name,
     image,
@@ -58,9 +59,18 @@ const ProductCard = ({ product }) => {
               </div>
               <p className="card-text mb-1">Contact: {mobileNumber}</p>
 
-              <button type="button" className="btn btn-info mt-4">
+              {/* <button type="button" className="btn btn-info mt-4">
                 Book Now
-              </button>
+              </button> */}
+              <Button
+                onClick={() => {
+                  setProduct(product);
+                  setModalShow(true);
+                }}
+                variant="primary"
+              >
+                Book Now
+              </Button>
             </div>
           </div>
         </div>
