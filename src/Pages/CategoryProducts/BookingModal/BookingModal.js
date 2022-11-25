@@ -27,7 +27,7 @@ const BookingModal = ({ show, product, setProduct }) => {
       meetingLocation: data.meetingLocation,
     };
 
-    // console.log(booking);
+    console.log(booking);
 
     fetch('http://localhost:5000/bookings', {
       method: 'POST',

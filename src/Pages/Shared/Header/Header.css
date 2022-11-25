@@ -43,3 +43,7 @@
 .btn-log-out:hover {
   background-color: #f1236f;
 }
+
+.dropdown-menu {
+  min-width: fit-content !important;
+}

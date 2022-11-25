@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './Header.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -7,7 +7,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import logo from '../../../assets/images/logo.png';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
-import { Button, Image } from 'react-bootstrap';
+import { Button, Dropdown, DropdownButton, Image } from 'react-bootstrap';
 import { FaUserCircle } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -15,6 +15,7 @@ import Tooltip from 'react-bootstrap/Tooltip';
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [accountType, setAccountType] = useState('User');
 
   const handleLogOut = () => {
     logOut();
@@ -108,6 +109,48 @@ const Header = () => {
                           <FaUserCircle size={36} title={user?.displayName} />
                         )}
                       </Link>
+
+                      <DropdownButton
+                        id="dropdown-basic-button"
+                        title={accountType}
+                        className="border-0"
+                      >
+                        <>
+                          <OverlayTrigger
+                            key="bottom"
+                            placement="bottom"
+                            overlay={
+                              <Tooltip>{'Default account type'}</Tooltip>
+                            }
+                          >
+                            <Dropdown.Item
+                              onClick={(e) => {
+                                setAccountType(e.target.innerText);
+                              }}
+                            >
+                              User
+                            </Dropdown.Item>
+                          </OverlayTrigger>
+                        </>
+
+                        <>
+                          <OverlayTrigger
+                            key="bottom"
+                            placement="bottom"
+                            overlay={
+                              <Tooltip>{'Use account as a Seller'}</Tooltip>
+                            }
+                          >
+                            <Dropdown.Item
+                              onClick={(e) => {
+                                setAccountType(e.target.innerText);
+                              }}
+                            >
+                              Seller
+                            </Dropdown.Item>
+                          </OverlayTrigger>
+                        </>
+                      </DropdownButton>
 
                       <Link to="/login">
                         <Button
