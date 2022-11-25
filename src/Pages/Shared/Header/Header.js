@@ -12,10 +12,41 @@ import { FaUserCircle } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import { useQuery } from '@tanstack/react-query';
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
-  const [accountType, setAccountType] = useState('User');
+  // const [accountType, setAccountType] = useState('User');
+
+  const url = `http://localhost:5000/users/${user?.email}`;
+  const { data: savedUser = {}, refetch } = useQuery({
+    queryKey: ['users', user?.email],
+    queryFn: async () => {
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        return data;
+      } catch (error) {
+        console.log('Error:', error);
+      }
+    },
+  });
+
+  console.log(savedUser);
+
+  const handleSellerAccount = () => {
+    fetch(`http://localhost:5000/users/seller/${user?.email}`, {
+      method: 'PUT',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          refetch();
+          toast.success('Switch as a Seller account');
+        }
+      });
+  };
 
   const handleLogOut = () => {
     logOut();
@@ -112,8 +143,8 @@ const Header = () => {
 
                       <DropdownButton
                         id="dropdown-basic-button"
-                        title={accountType}
-                        className="border-0"
+                        title={savedUser?.role}
+                        className="border-0 fw-bold"
                       >
                         <>
                           <OverlayTrigger
@@ -123,13 +154,7 @@ const Header = () => {
                               <Tooltip>{'Default account type'}</Tooltip>
                             }
                           >
-                            <Dropdown.Item
-                              onClick={(e) => {
-                                setAccountType(e.target.innerText);
-                              }}
-                            >
-                              User
-                            </Dropdown.Item>
+                            <Dropdown.Item>User</Dropdown.Item>
                           </OverlayTrigger>
                         </>
 
@@ -142,8 +167,8 @@ const Header = () => {
                             }
                           >
                             <Dropdown.Item
-                              onClick={(e) => {
-                                setAccountType(e.target.innerText);
+                              onClick={() => {
+                                handleSellerAccount();
                               }}
                             >
                               Seller
@@ -172,12 +197,12 @@ const Header = () => {
                           Login
                         </Button>
                       </Link>
-                      <Link to="/register">
+                      <Link to="/signup">
                         <Button
                           variant="info"
                           className="btn-register fw-semibold  text-white"
                         >
-                          Register
+                          Sign Up
                         </Button>
                       </Link>
                     </>

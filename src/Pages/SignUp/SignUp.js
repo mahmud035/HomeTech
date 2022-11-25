@@ -80,7 +80,7 @@ const SignUp = () => {
   };
 
   const saveUser = (name, email) => {
-    const user = { name, email };
+    const user = { name, email, role: 'User' };
     console.log(user);
 
     fetch('http://localhost:5000/users', {
@@ -93,6 +93,9 @@ const SignUp = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log('SavedUser:', data);
+        if (data.acknowledged) {
+          navigate('/');
+        }
       });
   };
 
