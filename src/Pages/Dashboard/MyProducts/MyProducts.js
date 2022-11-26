@@ -39,7 +39,11 @@ const MyProducts = () => {
 
       <div className="my-product-card-container">
         {products.map((product, index) => (
-          <MyProductCard key={index} product={product}></MyProductCard>
+          <MyProductCard
+            key={index}
+            product={product}
+            refetch={refetch}
+          ></MyProductCard>
         ))}
       </div>
     </div>

@@ -7,7 +7,7 @@ const OrderProductCard = ({ order }) => {
 
   return (
     <div>
-      <Card className="order-product-card border-0 shadow p-2">
+      <Card className="order-product-card border-0 shadow p-2 h-100">
         <Card.Img variant="top" src={image} />
         <Card.Body className="pt-0">
           <Card.Title>{productName}</Card.Title>
