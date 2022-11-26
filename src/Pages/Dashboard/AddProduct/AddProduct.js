@@ -55,10 +55,12 @@ const AddProduct = () => {
             image: imageURL,
             postedTime: postedTime,
             resalePrice: data.resalePrice,
+            originalPrice: data.originalPrice,
             productCondition: data.productCondition,
             mobileNumber: data.phone,
             location: data.location,
             yearOfPurchase: data.yearOfPurchase,
+            yearOfUse: data.yearOfUse,
             description: data.description,
             isAdvertise: false,
             salesStatus: 'available',
@@ -110,7 +112,7 @@ const AddProduct = () => {
             )}
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          {/* <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label className="fw-semibold">Product Category </Form.Label>
             <Form.Control
               {...register('categoryName', {
@@ -124,34 +126,20 @@ const AddProduct = () => {
                 {errors.categoryName?.message}
               </small>
             )}
-          </Form.Group>
+          </Form.Group> */}
 
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label className="fw-semibold">Photo</Form.Label>
-            <Form.Control
-              {...register('image', { required: 'Photo is required' })}
-              type="file"
-              accept="image/*"
-            />
-
-            {errors.image && (
-              <p className="text-danger mb-0">{errors.image?.message}</p>
-            )}
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label className="fw-semibold">Price </Form.Label>
-            <Form.Control
-              {...register('resalePrice', { required: 'Price is required' })}
-              type="number"
-            />
-
-            {errors.resalePrice && (
-              <small className="text-danger mb-0">
-                {errors.resalePrice?.message}
-              </small>
-            )}
-          </Form.Group>
+          <Form.Label className="fw-semibold"> Product Category </Form.Label>
+          <Form.Select
+            {...register('categoryName', {
+              required: 'Category Name is required',
+            })}
+            className="mb-3"
+            aria-label="Default select example"
+          >
+            <option value="1">HP</option>
+            <option value="2">DELL</option>
+            <option value="3">ASUS</option>
+          </Form.Select>
 
           <Form.Label className="fw-semibold"> Condition</Form.Label>
           <Form.Select
@@ -170,6 +158,61 @@ const AddProduct = () => {
               {errors.productCondition?.message}
             </small>
           )}
+
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label className="fw-semibold">Photo</Form.Label>
+            <Form.Control
+              {...register('image', { required: 'Photo is required' })}
+              type="file"
+              accept="image/*"
+            />
+
+            {errors.image && (
+              <p className="text-danger mb-0">{errors.image?.message}</p>
+            )}
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label className="fw-semibold">Resale Price </Form.Label>
+            <Form.Control
+              {...register('resalePrice', { required: 'Price is required' })}
+              type="number"
+            />
+
+            {errors.resalePrice && (
+              <small className="text-danger mb-0">
+                {errors.resalePrice?.message}
+              </small>
+            )}
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label className="fw-semibold">Original Price </Form.Label>
+            <Form.Control
+              {...register('originalPrice', { required: 'Price is required' })}
+              type="number"
+            />
+
+            {errors.originalPrice && (
+              <small className="text-danger mb-0">
+                {errors.originalPrice?.message}
+              </small>
+            )}
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label className="fw-semibold">Years of Use </Form.Label>
+            <Form.Control
+              {...register('yearsOfUse', { required: 'Price is required' })}
+              type="text"
+            />
+
+            {errors.yearsOfUse && (
+              <small className="text-danger mb-0">
+                {errors.yearsOfUse?.message}
+              </small>
+            )}
+          </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label className="fw-semibold">Phone No </Form.Label>

@@ -1,0 +1,19 @@
+.report-card {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 2rem;
+}
+
+img.card-image {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+}
+
+.report-item-delete-icon {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #ff3c83;
+  cursor: pointer;
+}
