@@ -33,8 +33,8 @@ const AdvertiseItems = () => {
     <section>
       {advertiseItems.length > 0 && (
         <div className="container py-5">
-          <div className="text-center">
-            <h1>Latest Promotions</h1>
+          <div className="text-center ">
+            <h3 className="fw-bold">Latest Promotions</h3>
             <p>
               Checkout the latest & upcoming promotions and offers at HomeTech
             </p>

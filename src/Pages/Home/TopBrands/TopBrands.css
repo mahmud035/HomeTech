@@ -1,0 +1,13 @@
+.brands-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  align-items: center;
+  border: 2px solid #eee;
+  padding: 1rem;
+}
+
+.brands-container img {
+  padding: 0 10px;
+}
