@@ -3,7 +3,7 @@ import './Banner.css';
 import Carousel from 'react-bootstrap/Carousel';
 import banner from '../../../assets/images/banner.webp';
 import banner2 from '../../../assets/images/banner2.png';
-import banner3 from '../../../assets/images/banner3.PNG';
+import banner3 from '../../../assets/images/banner3.webp';
 
 const Banner = () => {
   return (

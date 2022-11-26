@@ -33,7 +33,12 @@ const AdvertiseItems = () => {
     <section>
       {advertiseItems.length > 0 && (
         <div className="container py-5">
-          <h1 className="text-center">Advertise Items</h1>
+          <div className="text-center">
+            <h1>Latest Promotions</h1>
+            <p>
+              Checkout the latest & upcoming promotions and offers at HomeTech
+            </p>
+          </div>
 
           <div className="advertise-items-card-container py-5">
             {advertiseItems.map((advertiseItem, index) => (
