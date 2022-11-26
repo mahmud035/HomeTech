@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import AdvertiseItems from '../AdvertiseItems/AdvertiseItems';
 import Banner from '../Banner/Banner';
 import Category from '../Category/Category';
 import './Home.css';
@@ -12,6 +13,7 @@ const Home = () => {
     <div>
       <Banner></Banner>
       <Category></Category>
+      <AdvertiseItems></AdvertiseItems>
     </div>
   );
 };

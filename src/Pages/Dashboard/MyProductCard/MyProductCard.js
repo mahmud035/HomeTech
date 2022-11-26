@@ -4,8 +4,22 @@ import { toast } from 'react-toastify';
 import './MyProductCard.css';
 
 const MyProductCard = ({ product, refetch }) => {
-  const { _id, name, image, salesStatus, resalePrice } = product;
-  console.log(product);
+  const { _id, name, image, salesStatus, resalePrice, isAdvertise } = product;
+  // console.log(product);
+
+  const handleAdvertisedProduct = (id) => {
+    fetch(`http://localhost:5000/seller/products/${id}`, {
+      method: 'PUT',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount) {
+          toast.info('Product advertising completed');
+          refetch();
+        }
+      });
+  };
 
   const handleDeleteProduct = (id) => {
     fetch(`http://localhost:5000/seller/products/${id}`, {
@@ -36,9 +50,16 @@ const MyProductCard = ({ product, refetch }) => {
             <span className="text-success fw-bold">{salesStatus}</span>
           </p>
           <div className="d-flex gap-3">
-            <Button className="mt-3 " variant="primary">
-              Advertise
-            </Button>
+            {salesStatus === 'available' && (
+              <Button
+                onClick={() => handleAdvertisedProduct(_id)}
+                className="mt-3 "
+                variant="primary"
+                disabled={isAdvertise ? true : false}
+              >
+                {isAdvertise ? 'Advertised' : 'Advertise'}
+              </Button>
+            )}
             <Button
               onClick={() => handleDeleteProduct(_id)}
               className="mt-3"
