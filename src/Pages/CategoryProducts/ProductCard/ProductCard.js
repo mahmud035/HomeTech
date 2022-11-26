@@ -2,9 +2,12 @@ import React, { useEffect } from 'react';
 import './ProductCard.css';
 import { MdVerifiedUser } from 'react-icons/md';
 import { Button } from 'react-bootstrap';
+import { MdReportProblem } from 'react-icons/md';
+import { toast } from 'react-toastify';
 
 const ProductCard = ({ product, setProduct, setModalShow }) => {
   const {
+    _id,
     name,
     image,
     location,
@@ -20,6 +23,18 @@ const ProductCard = ({ product, setProduct, setModalShow }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   });
+
+  const handleReportItem = (id) => {
+    fetch(`http://localhost:5000/products/${id}`, {
+      method: 'PUT',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          toast.success('We have accepted your report');
+        }
+      });
+  };
 
   return (
     <div>
@@ -59,18 +74,25 @@ const ProductCard = ({ product, setProduct, setModalShow }) => {
               </div>
               <p className="card-text mb-1">Contact: {mobileNumber}</p>
 
-              {/* <button type="button" className="btn btn-info mt-4">
-                Book Now
-              </button> */}
-              <Button
-                onClick={() => {
-                  setProduct(product);
-                  setModalShow(true);
-                }}
-                variant="primary"
-              >
-                Book Now
-              </Button>
+              <div className="d-flex justify-content-between align-items-center">
+                <Button
+                  onClick={() => {
+                    setProduct(product);
+                    setModalShow(true);
+                  }}
+                  variant="primary"
+                  className="mt-3"
+                >
+                  Book Now
+                </Button>
+                <MdReportProblem
+                  onClick={() => handleReportItem(_id)}
+                  size={30}
+                  title="Report this Product"
+                  className="mt-4"
+                  style={{ cursor: 'pointer', color: '#f1236f' }}
+                />
+              </div>
             </div>
           </div>
         </div>
