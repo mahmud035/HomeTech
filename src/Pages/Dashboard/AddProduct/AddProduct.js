@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../context/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
@@ -13,6 +14,7 @@ const AddProduct = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+  const navigate = useNavigate();
 
   const date = new Date();
   const options = {
@@ -76,6 +78,7 @@ const AddProduct = () => {
               console.log(data);
               if (data.acknowledged) {
                 toast.success('Product Added Successfully');
+                navigate('/dashboard/myproducts');
               }
             });
         }
