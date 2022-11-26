@@ -27,7 +27,7 @@ const AddProduct = () => {
   const postedTime = date.toLocaleTimeString('en-us', options);
 
   const handleAddProduct = (data) => {
-    console.log(data);
+    // console.log(data);
 
     const image = data.image[0];
     // console.log(image);
@@ -62,7 +62,22 @@ const AddProduct = () => {
             salesStatus: 'available',
           };
 
-          console.log(product);
+          // console.log(product);
+
+          fetch('http://localhost:5000/seller/products', {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json',
+            },
+            body: JSON.stringify(product),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              if (data.acknowledged) {
+                toast.success('Product Added Successfully');
+              }
+            });
         }
 
         if (imageData.error) {
