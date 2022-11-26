@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap';
 import './AdvertiseItemCard.css';
 
 const AdvertiseItemCard = ({ advertiseItem }) => {
-  const { name, image, salesStatus, resalePrice, isAdvertise } = advertiseItem;
+  const { name, image, resalePrice } = advertiseItem;
 
   return (
     <div>

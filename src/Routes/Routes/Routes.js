@@ -3,9 +3,12 @@ import DashboardLayout from '../../Layout/DashboardLayout';
 import Main from '../../Layout/Main';
 import CategoryProducts from '../../Pages/CategoryProducts/CategoryProducts/CategoryProducts';
 import AddProduct from '../../Pages/Dashboard/AddProduct/AddProduct';
+import AllBuyers from '../../Pages/Dashboard/AllBuyers/AllBuyers';
+import AllSellers from '../../Pages/Dashboard/AllSellers/AllSellers';
 import AllUsers from '../../Pages/Dashboard/AllUsers/AllUsers';
 import MyOrders from '../../Pages/Dashboard/MyOrders/MyOrders';
 import MyProducts from '../../Pages/Dashboard/MyProducts/MyProducts';
+import ReportedItems from '../../Pages/Dashboard/ReportedItems/ReportedItems';
 import Home from '../../Pages/Home/Home/Home';
 import Login from '../../Pages/Login/Login';
 import ErrorPage from '../../Pages/Shared/ErrorPage/ErrorPage';
@@ -84,6 +87,31 @@ const router = createBrowserRouter([
           <SellerRoute>
             <MyProducts></MyProducts>
           </SellerRoute>
+        ),
+      },
+
+      {
+        path: '/dashboard/allbuyers',
+        element: (
+          <AdminRoute>
+            <AllBuyers></AllBuyers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: '/dashboard/allsellers',
+        element: (
+          <AdminRoute>
+            <AllSellers></AllSellers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: '/dashboard/reporteditems',
+        element: (
+          <AdminRoute>
+            <ReportedItems></ReportedItems>
+          </AdminRoute>
         ),
       },
     ],

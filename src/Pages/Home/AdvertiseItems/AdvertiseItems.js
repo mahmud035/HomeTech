@@ -12,7 +12,6 @@ const AdvertiseItems = () => {
     isError,
     data: advertiseItems = [],
     error,
-    refetch,
   } = useQuery({
     queryKey: ['advertiseitems'],
     queryFn: async () => {

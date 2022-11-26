@@ -42,9 +42,15 @@ const DashboardLayout = () => {
 
               {isAdmin && (
                 <>
-                  <Button>All Buyers</Button>
-                  <Button>All Sellers</Button>
-                  <Button>Reported Items</Button>
+                  <Link to="/dashboard/allbuyers">
+                    <Button>All Buyers</Button>
+                  </Link>
+                  <Link to="/dashboard/allsellers">
+                    <Button>All Sellers</Button>
+                  </Link>
+                  <Link to="/dashboard/reporteditems">
+                    <Button>Reported Items</Button>
+                  </Link>
                 </>
               )}
             </ButtonGroup>
