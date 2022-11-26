@@ -74,7 +74,7 @@ const SignUp = () => {
         }
 
         if (imageData.error) {
-          toast.info('Please upload .jpg /.jpeg /.png type image');
+          return toast.error('Please upload .jpg /.jpeg /.png type image');
         }
       });
   };
