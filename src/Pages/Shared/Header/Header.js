@@ -32,7 +32,7 @@ const Header = () => {
     },
   });
 
-  console.log(savedUser);
+  // console.log(savedUser);
 
   const handleSellerAccount = () => {
     fetch(`http://localhost:5000/users/seller/${user?.email}`, {

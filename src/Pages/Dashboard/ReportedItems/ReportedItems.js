@@ -32,7 +32,7 @@ const ReportedItems = () => {
 
   return (
     <div className="py-4">
-      <h1 className="text-center pb-3">All Sellers</h1>
+      <h1 className="text-center pb-3">Reported Items</h1>
 
       <div className="all-sellers-card-container">
         {reporteditems.map((reporteditem, index) => (

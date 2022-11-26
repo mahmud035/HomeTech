@@ -9,7 +9,6 @@ const CategoryProducts = () => {
   const [modalShow, setModalShow] = useState(false);
 
   const categoryProducts = useLoaderData();
-  // console.log(product);
 
   return (
     <section className="container">

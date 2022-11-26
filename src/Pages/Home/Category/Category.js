@@ -27,7 +27,7 @@ const Category = () => {
     return <h1>{error.message}</h1>;
   }
 
-  console.log(categories);
+  // console.log(categories);
 
   return (
     <div className="container">
