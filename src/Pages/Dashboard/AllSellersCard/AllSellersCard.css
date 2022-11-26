@@ -1,0 +1,19 @@
+.seller-card {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1.5rem;
+}
+
+img.card-image {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+}
+
+.delete-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #ff3c83;
+  cursor: pointer;
+}

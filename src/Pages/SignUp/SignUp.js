@@ -61,7 +61,7 @@ const SignUp = () => {
               updateUser(userInfo)
                 .then(() => {
                   //* Save user information to database
-                  saveUser(data.name, data.email);
+                  saveUser(data.name, data.email, imageURL);
                 })
                 .catch((error) => {
                   toast.error(error.message.slice(22, -2));
@@ -79,8 +79,8 @@ const SignUp = () => {
       });
   };
 
-  const saveUser = (name, email) => {
-    const user = { name, email, role: 'User' };
+  const saveUser = (name, email, imageURL) => {
+    const user = { name, email, image: imageURL, role: 'User' };
     console.log(user);
 
     fetch('http://localhost:5000/users', {
