@@ -12,6 +12,7 @@ const AllBuyers = () => {
     isError,
     data: buyers = [],
     error,
+    refetch,
   } = useQuery({
     queryKey: ['buyers'],
     queryFn: async () => {
@@ -35,7 +36,11 @@ const AllBuyers = () => {
 
       <div className="all-sellers-card-container">
         {buyers.map((buyer, index) => (
-          <AllBuyersCard key={index} buyer={buyer}></AllBuyersCard>
+          <AllBuyersCard
+            key={index}
+            buyer={buyer}
+            refetch={refetch}
+          ></AllBuyersCard>
         ))}
       </div>
     </div>

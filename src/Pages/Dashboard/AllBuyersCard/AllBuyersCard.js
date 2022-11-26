@@ -4,10 +4,25 @@ import { FaUser } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
 import { FaUserCircle } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
-const AllBuyersCard = ({ buyer }) => {
-  const { name, image, email } = buyer;
-  console.log(buyer);
+const AllBuyersCard = ({ buyer, refetch }) => {
+  const { _id, name, image, email } = buyer;
+
+  const handleDeleteBuyer = (id) => {
+    fetch(`http://localhost:5000/buyers/${id}`, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.deletedCount > 0) {
+          toast.success(`Buyer ${name.toUpperCase()} deleted successfully`);
+          refetch();
+        }
+      });
+  };
+
   return (
     <div>
       <div className="seller-card shadow position-relative">
@@ -29,7 +44,11 @@ const AllBuyersCard = ({ buyer }) => {
           </div>
         </div>
 
-        <RiDeleteBin2Fill size={20} className="delete-icon" />
+        <RiDeleteBin2Fill
+          onClick={() => handleDeleteBuyer(_id)}
+          size={20}
+          className="delete-icon"
+        />
       </div>
     </div>
   );

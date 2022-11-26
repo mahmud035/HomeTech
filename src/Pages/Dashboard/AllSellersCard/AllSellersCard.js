@@ -3,11 +3,24 @@ import './AllSellersCard.css';
 import { FaUser } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
+import { toast } from 'react-toastify';
 
-const AllSellersCard = ({ seller }) => {
-  const { name, image, email } = seller;
+const AllSellersCard = ({ seller, refetch }) => {
+  const { _id, name, image, email } = seller;
 
-  const handleSellerDelete = () => {};
+  const handleDeleteSeller = (id) => {
+    fetch(`http://localhost:5000/sellers/${id}`, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.deletedCount > 0) {
+          toast.success(`Seller ${name} deleted successfully`);
+          refetch();
+        }
+      });
+  };
 
   return (
     <div className="seller-card shadow position-relative">
@@ -26,7 +39,7 @@ const AllSellersCard = ({ seller }) => {
 
       <RiDeleteBin2Fill
         size={20}
-        onClick={handleSellerDelete}
+        onClick={() => handleDeleteSeller(_id)}
         className="delete-icon"
       />
     </div>
