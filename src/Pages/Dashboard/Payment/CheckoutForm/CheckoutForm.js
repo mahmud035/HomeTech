@@ -1,5 +1,6 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import './CheckoutForm.css';
 
@@ -10,9 +11,12 @@ const CheckoutForm = ({ product }) => {
   const [transactionId, setTransactionId] = useState('');
   const [clientSecret, setClientSecret] = useState('');
 
+  const navigate = useNavigate();
+
   const stripe = useStripe();
   const elements = useElements();
-  const { _id, resalePrice, userName, userEmail } = product;
+  const { _id, resalePrice, userName, userEmail, productName } = product;
+  console.log(product);
 
   useEffect(() => {
     fetch('http://localhost:5000/create-payment-intent', {
@@ -99,6 +103,16 @@ const CheckoutForm = ({ product }) => {
             setSuccess('Congrats! your payment is completed');
             setTransactionId(paymentIntent.id);
             toast.success('Congrats! your payment is completed');
+
+            fetch(`http://localhost:5000/products/salesstatus/${productName}`, {
+              method: 'PUT',
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                console.log(data);
+              });
+
+            // navigate('/dashboard');
           }
         });
     }
