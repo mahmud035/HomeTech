@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useSetTitle from '../../hooks/useSetTitle';
 import { useForm } from 'react-hook-form';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
   const {
@@ -16,6 +17,8 @@ const Login = () => {
   } = useForm();
   const { user, signIn, passwordReset } = useContext(AuthContext);
   const [loginUserEmail, setLoginUserEmail] = useState('');
+  const [token] = useToken(loginUserEmail);
+
   useSetTitle('Login');
 
   useEffect(() => {
@@ -62,11 +65,13 @@ const Login = () => {
       });
   };
 
+  //* INFO: If (user && token) is found then redirect user to the page they wanted to go.
+
   useEffect(() => {
-    if (user) {
+    if (user && token) {
       navigate(from, { replace: true });
     }
-  }, [user, from, navigate]);
+  }, [user, from, token, navigate]);
 
   return (
     <div className="login-page-container">

@@ -6,8 +6,6 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../context/AuthProvider';
 import { useNavigate } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import Loading from '../../Shared/Loading/Loading';
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
@@ -17,27 +15,6 @@ const AddProduct = () => {
     handleSubmit,
   } = useForm();
   const navigate = useNavigate();
-
-  const url = `http://localhost:5000/users/${user?.email}`;
-  const { isLoading, data: savedUser = {} } = useQuery({
-    queryKey: ['users', user?.email],
-    queryFn: async () => {
-      try {
-        const res = await fetch(url);
-        const data = await res.json();
-        return data;
-      } catch (error) {
-        console.log('Error:', error);
-      }
-    },
-  });
-
-  if (isLoading) {
-    return <Loading></Loading>;
-  }
-
-  const verified = savedUser?.verified === true ? true : false;
-  // console.log(verified);
 
   const date = new Date();
   const options = {
@@ -87,10 +64,9 @@ const AddProduct = () => {
             description: data.description,
             isAdvertise: false,
             salesStatus: 'available',
-            verified: verified,
           };
 
-          console.log(product);
+          // console.log(product);
 
           fetch('http://localhost:5000/products', {
             method: 'POST',
