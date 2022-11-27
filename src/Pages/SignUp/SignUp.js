@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './SignUp.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -10,6 +10,8 @@ import { BsGithub } from 'react-icons/bs';
 import useSetTitle from '../../hooks/useSetTitle';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import useToken from '../../hooks/useToken';
+import Loading from '../Shared/Loading/Loading';
 
 const SignUp = () => {
   const {
@@ -20,8 +22,22 @@ const SignUp = () => {
   const { createUser, updateUser, googleSignIn, githubSignIn } =
     useContext(AuthContext);
 
+  const [createdUserEmail, setCreatedUserEmail] = useState('');
+  const [token] = useToken(createdUserEmail);
+
   const navigate = useNavigate();
   useSetTitle('Sign Up');
+
+  // FIXME: why loading isn't shown here?
+  useEffect(() => {
+    if (!createdUserEmail || !token) {
+      <Loading></Loading>;
+    }
+  }, [createdUserEmail, token]);
+
+  if (token) {
+    navigate('/');
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -94,7 +110,8 @@ const SignUp = () => {
       .then((data) => {
         console.log('SavedUser:', data);
         if (data.acknowledged) {
-          navigate('/');
+          // set createdUserEmail into state Variable
+          setCreatedUserEmail(email);
         }
       });
   };
