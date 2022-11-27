@@ -7,7 +7,7 @@ import './CategoryCard.css';
 
 const CategoryCard = ({ category }) => {
   const { user } = useContext(AuthContext);
-  const { categoryName, categoryId, image } = category;
+  const { categoryName, image } = category;
 
   return (
     <div>
@@ -17,7 +17,7 @@ const CategoryCard = ({ category }) => {
             toast.info('Please login to see all products');
           }
         }}
-        to={`/category/${categoryId}`}
+        to={`/category/${categoryName}`}
         className="text-decoration-none text-black"
       >
         <Card className="category-card border-0 shadow-sm ">

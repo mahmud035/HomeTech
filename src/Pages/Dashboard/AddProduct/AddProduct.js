@@ -6,6 +6,8 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../context/AuthProvider';
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import Loading from '../../Shared/Loading/Loading';
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
@@ -15,6 +17,27 @@ const AddProduct = () => {
     handleSubmit,
   } = useForm();
   const navigate = useNavigate();
+
+  const url = `http://localhost:5000/users/${user?.email}`;
+  const { isLoading, data: savedUser = {} } = useQuery({
+    queryKey: ['users', user?.email],
+    queryFn: async () => {
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        return data;
+      } catch (error) {
+        console.log('Error:', error);
+      }
+    },
+  });
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
+
+  const verified = savedUser?.verified === true ? true : false;
+  // console.log(verified);
 
   const date = new Date();
   const options = {
@@ -60,13 +83,14 @@ const AddProduct = () => {
             mobileNumber: data.phone,
             location: data.location,
             yearOfPurchase: data.yearOfPurchase,
-            yearOfUse: data.yearOfUse,
+            yearsOfUse: data.yearsOfUse,
             description: data.description,
             isAdvertise: false,
             salesStatus: 'available',
+            verified: verified,
           };
 
-          // console.log(product);
+          console.log(product);
 
           fetch('http://localhost:5000/products', {
             method: 'POST',
@@ -77,7 +101,7 @@ const AddProduct = () => {
           })
             .then((res) => res.json())
             .then((data) => {
-              console.log(data);
+              // console.log(data);
               if (data.acknowledged) {
                 toast.success('Product Added Successfully');
                 navigate('/dashboard/myproducts');
@@ -120,9 +144,9 @@ const AddProduct = () => {
             className="mb-3"
             aria-label="Default select example"
           >
-            <option value="1">HP</option>
-            <option value="2">DELL</option>
-            <option value="3">ASUS</option>
+            <option value="HP">HP</option>
+            <option value="DELL">DELL</option>
+            <option value="ASUS">ASUS</option>
           </Form.Select>
 
           <Form.Label className="fw-semibold"> Condition</Form.Label>
@@ -133,9 +157,9 @@ const AddProduct = () => {
             className="mb-3"
             aria-label="Default select example"
           >
-            <option value="1">Excellent</option>
-            <option value="2">Good</option>
-            <option value="3">Fair</option>
+            <option value="Excellent">Excellent</option>
+            <option value="Good">Good</option>
+            <option value="Fair">Fair</option>
           </Form.Select>
           {errors.productCondition && (
             <small className="text-danger mb-0">
@@ -187,7 +211,9 @@ const AddProduct = () => {
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label className="fw-semibold">Years of Use </Form.Label>
             <Form.Control
-              {...register('yearsOfUse', { required: 'Price is required' })}
+              {...register('yearsOfUse', {
+                required: 'Years of use is required',
+              })}
               type="text"
             />
 

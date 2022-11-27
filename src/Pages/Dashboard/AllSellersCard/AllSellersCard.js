@@ -19,6 +19,15 @@ const AllSellersCard = ({ seller, refetch }) => {
         if (data.modifiedCount > 0) {
           toast.success(`Seller ${name} verified successfully`);
           refetch();
+
+          // update Seller verify status in the productsCollection
+          fetch(`http://localhost:5000/products/verify/${email}`, {
+            method: 'PUT',
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+            });
         }
       });
   };
