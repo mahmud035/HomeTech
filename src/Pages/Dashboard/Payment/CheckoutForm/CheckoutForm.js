@@ -140,16 +140,17 @@ const CheckoutForm = ({ product }) => {
             },
           }}
         />
+
         <button
           className="btn btn-sm mt-4 btn-primary"
           type="submit"
           disabled={!stripe || !clientSecret || processing}
         >
-          Pay
+          Pay Now
         </button>
       </form>
+      <p className="text-danger text-center pt-2 ">{cardError}</p>
 
-      <p className="text-danger pt-3">{cardError}</p>
       {/* {success && (
         <div>
           <p className="text-green-500">{success}</p>

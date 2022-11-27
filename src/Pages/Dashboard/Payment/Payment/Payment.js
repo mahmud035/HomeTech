@@ -19,7 +19,7 @@ const Payment = () => {
       </h5>
 
       {/* Stripe */}
-      <div className="my-5 checkout-form">
+      <div className="my-5 checkout-form ">
         <Elements stripe={stripePromise}>
           <CheckoutForm product={product} />
         </Elements>

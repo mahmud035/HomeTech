@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+## Welcome! 👋
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### Project Name: HomeTech
 
-## Available Scripts
+#### Live Website: <a href="https://nurturing-minds-client-side.web.app/">HomeTech</a>
 
-In the project directory, you can run:
+### Description
 
-### `npm start`
+HomeTech is an eCommerce website where users can buy and sell second-hand laptops.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Features and Functionality
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<ul>
+<li>Users can browse top-brand laptops under various categories and book their preferred laptops.</li>
+<li>Users can pay for their products through Stripe.</li>
+<li> A user can convert his account to a seller account if he wants and can add and delete his products from that account. </li> 
+<li> Users can sign up with their email, password, Google account, or Github account.</li>
+<li> Admin can control all buyers and all sellers. Admin can verify the seller. Also can delete buyer and seller. </li>
+<li>The seller can advertise any of his products.</li>
+</ul>
 
-### `npm test`
+### Built with
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React v18
+- React Router v6
+- React / TanStack Query
+- React Hook Form
+- Firebase Authentication
+- Node
+- Express Js
+- MongoDB
+- JWT
+- Stripe (Payment)
+- Axios
+- React Bootstrap
+- Mobile-first workflow
 
-### `npm run build`
+### What I did
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<ul>
+<li>Use React, React Router for build the project </li>
+<li> Use Firebase Authentication for client side authentication</li>
+<li> Use Node, Express, MongoDB for server side </li>
+<li> Create interactive UI </li>
+</ul>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### What I learned
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+While doing this project gave me a fresh overview of basic react, react-router, react-toasty, Firebase Authentication, Node, Express js, MongoDB and much more. <strong> Specially Mongodb CRUD operation</strong>. Now I have enough understanding about these topics and I am confident about it.
