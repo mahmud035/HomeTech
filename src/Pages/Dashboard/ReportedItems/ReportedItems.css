@@ -1,0 +1,19 @@
+.reported-items-card-container {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+  gap: 2rem;
+  justify-content: center;
+}
+
+@media (min-width: 992px) and (max-width: 1439px) {
+  .reported-items-card-container {
+    grid-template-columns: 320px 320px;
+  }
+}
+
+@media (max-width: 991px) {
+  .reported-items-card-container {
+    grid-template-columns: 320px;
+  }
+}

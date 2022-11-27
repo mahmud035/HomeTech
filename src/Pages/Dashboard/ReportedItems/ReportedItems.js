@@ -34,7 +34,7 @@ const ReportedItems = () => {
     <div className="py-4">
       <h1 className="text-center pb-3">Reported Items</h1>
 
-      <div className="all-sellers-card-container">
+      <div className="reported-items-card-container">
         {reporteditems.map((reporteditem, index) => (
           <ReportedItemCard
             key={index}

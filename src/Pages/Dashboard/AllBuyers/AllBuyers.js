@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import './AllSellers.css';
+import './AllBuyer.css';
 import React from 'react';
 import Loading from '../../Shared/Loading/Loading';
 import AllBuyersCard from '../AllBuyersCard/AllBuyersCard';
@@ -34,7 +34,7 @@ const AllBuyers = () => {
     <div className="py-4">
       <h1 className="text-center pb-3">All Buyers</h1>
 
-      <div className="all-sellers-card-container">
+      <div className="all-buyers-card-container">
         {buyers.map((buyer, index) => (
           <AllBuyersCard
             key={index}

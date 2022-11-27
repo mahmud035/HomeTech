@@ -25,7 +25,7 @@ const AllBuyersCard = ({ buyer, refetch }) => {
 
   return (
     <div>
-      <div className="seller-card shadow position-relative">
+      <div className="buyer-card shadow position-relative">
         <div className="d-flex gap-3">
           {image ? (
             <img src={image} className="card-image" alt="" />
