@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './ProductCard.css';
 import { MdVerifiedUser } from 'react-icons/md';
 import { Button } from 'react-bootstrap';
 import { MdReportProblem } from 'react-icons/md';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../../../context/AuthProvider';
+import useAdmin from '../../../hooks/useAdmin';
 
 const ProductCard = ({ product, setProduct, setModalShow }) => {
+  const { user } = useContext(AuthContext);
+  const [isAdmin] = useAdmin(user?.email);
   const {
     _id,
     name,
@@ -30,8 +34,12 @@ const ProductCard = ({ product, setProduct, setModalShow }) => {
     })
       .then((res) => res.json())
       .then((data) => {
+        // console.log(data);
         if (data.modifiedCount > 0) {
           toast.success('We have accepted your report');
+        }
+        if (data.modifiedCount === 0) {
+          toast.info('This product is already on the reported list.');
         }
       });
   };
@@ -89,7 +97,7 @@ const ProductCard = ({ product, setProduct, setModalShow }) => {
                   onClick={() => handleReportItem(_id)}
                   size={30}
                   title="Report this Product"
-                  className="mt-4"
+                  className={`mt-4 ${isAdmin ? 'd-none' : undefined}`}
                   style={{ cursor: 'pointer', color: '#f1236f' }}
                 />
               </div>

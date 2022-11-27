@@ -10,6 +10,9 @@ const MyProductCard = ({ product, refetch }) => {
   const handleAdvertisedProduct = (id) => {
     fetch(`http://localhost:5000/seller/products/${id}`, {
       method: 'PUT',
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('accessToken2')}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {
