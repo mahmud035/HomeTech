@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AuthContext } from '../../../context/AuthProvider';
 import Loading from '../../Shared/Loading/Loading';
 import MyProductCard from '../MyProductCard/MyProductCard';
@@ -8,7 +8,11 @@ import './MyProducts.css';
 const MyProducts = () => {
   const { user } = useContext(AuthContext);
 
-  const url = `http://localhost:5000/seller/products?email=${user?.email}`;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
+  const url = `http://localhost:5000/products/seller?email=${user?.email}`;
 
   const {
     isLoading,

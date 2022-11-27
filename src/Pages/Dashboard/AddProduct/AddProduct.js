@@ -68,7 +68,7 @@ const AddProduct = () => {
 
           // console.log(product);
 
-          fetch('http://localhost:5000/seller/products', {
+          fetch('http://localhost:5000/products', {
             method: 'POST',
             headers: {
               'content-type': 'application/json',
@@ -111,22 +111,6 @@ const AddProduct = () => {
               <small className="text-danger mb-0">{errors.name?.message}</small>
             )}
           </Form.Group>
-
-          {/* <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label className="fw-semibold">Product Category </Form.Label>
-            <Form.Control
-              {...register('categoryName', {
-                required: 'Category Name is required',
-              })}
-              type="text"
-            />
-
-            {errors.categoryName && (
-              <small className="text-danger mb-0">
-                {errors.categoryName?.message}
-              </small>
-            )}
-          </Form.Group> */}
 
           <Form.Label className="fw-semibold"> Product Category </Form.Label>
           <Form.Select

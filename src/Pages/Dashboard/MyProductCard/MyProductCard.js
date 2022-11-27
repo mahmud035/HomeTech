@@ -22,7 +22,7 @@ const MyProductCard = ({ product, refetch }) => {
   };
 
   const handleDeleteProduct = (id) => {
-    fetch(`http://localhost:5000/seller/products/${id}`, {
+    fetch(`http://localhost:5000/products/${id}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())
