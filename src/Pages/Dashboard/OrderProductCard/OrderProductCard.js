@@ -1,9 +1,11 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './OrderProductCard.css';
 
 const OrderProductCard = ({ order }) => {
-  const { image, productName, resalePrice } = order;
+  const { _id, image, productName, resalePrice } = order;
+  console.log(order);
 
   return (
     <div>
@@ -15,9 +17,20 @@ const OrderProductCard = ({ order }) => {
             <strong>Price:</strong>&nbsp;
             <span className="text-success fw-bold">{resalePrice} TK</span>
           </p>
-          <Button className="mt-3" variant="primary">
-            Pay
-          </Button>
+
+          {!order?.paid && (
+            <Link to={`/dashboard/payment/${_id}`}>
+              <Button className="mt-3" variant="primary">
+                Pay
+              </Button>
+            </Link>
+          )}
+
+          {order?.paid && (
+            <Button className="mt-3" variant="primary" disabled>
+              Paid
+            </Button>
+          )}
         </Card.Body>
       </Card>
     </div>

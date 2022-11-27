@@ -42,7 +42,7 @@ const MyOrders = () => {
     return <div>{error.message}</div>;
   }
 
-  console.log(orders);
+  // console.log(orders);
   return (
     <div>
       {orders.length === 0 ? (
