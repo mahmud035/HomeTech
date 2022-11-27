@@ -12,6 +12,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading/Loading';
+import { setSocialLoginToken } from '../../setSocialLoginToken/setSocialLoginToken';
 
 const SignUp = () => {
   const {
@@ -24,6 +25,7 @@ const SignUp = () => {
 
   const [createdUserEmail, setCreatedUserEmail] = useState('');
   const [token] = useToken(createdUserEmail);
+  console.log(token);
 
   const navigate = useNavigate();
   useSetTitle('Sign Up');
@@ -123,6 +125,9 @@ const SignUp = () => {
         console.log(user);
         toast.success('Account Created successfully');
 
+        // JWT Token
+        setSocialLoginToken(user);
+
         navigate('/');
       })
       .catch((error) => {
@@ -136,6 +141,9 @@ const SignUp = () => {
         const user = result.user;
         console.log(user);
         toast.success('Account Created successfully');
+
+        // JWT Token
+        setSocialLoginToken(user);
 
         navigate('/');
       })
