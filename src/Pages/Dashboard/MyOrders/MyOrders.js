@@ -22,7 +22,11 @@ const MyOrders = () => {
   } = useQuery({
     queryKey: ['orders', user?.email],
     queryFn: async () => {
-      const res = await fetch(url);
+      const res = await fetch(url, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('accessToken2')}`,
+        },
+      });
       const data = await res.json();
       return data;
     },
