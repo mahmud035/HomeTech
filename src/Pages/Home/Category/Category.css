@@ -1,3 +1,8 @@
+.category-section {
+  background-color: #1d3e53;
+  color: #fff;
+}
+
 .category-card-container {
   display: grid;
   grid-template-columns: 200px 200px 200px;

@@ -1,8 +1,29 @@
+.advertise-section {
+  background-color: #1a374d;
+  color: #fff;
+}
+
 .advertise-items-card-container {
   display: grid;
   grid-template-columns: 320px 320px 320px;
   gap: 1.5rem;
   justify-content: center;
+}
+
+.advertise-card {
+  background-color: #205375;
+  cursor: pointer;
+
+  transition: all 0.3s ease-in-out;
+}
+
+.advertise-card:hover {
+  transform: scale(1.03);
+}
+
+.advertise-card img {
+  overflow: hidden;
+  border-radius: 8px;
 }
 
 @media (min-width: 992px) and (max-width: 1439px) {

@@ -31,16 +31,20 @@ const Category = () => {
   // console.log(categories);
 
   return (
-    <div className="container">
-      <div className="text-center py-5">
-        <h3 className="fw-bold">Featured Category</h3>
-        <p>Get Your Desired Product from Featured Category!</p>
-      </div>
+    <div className="category-section pt-3 pb-5">
+      <div className="container">
+        <div className="text-center py-5">
+          <h2 className="fw-bold">
+            Featured <span style={{ color: 'aqua' }}>Category</span>
+          </h2>
+          <p>Get Your Desired Product from Featured Category!</p>
+        </div>
 
-      <div className="category-card-container pb-5">
-        {categories.map((category, index) => (
-          <CategoryCard key={index} category={category}></CategoryCard>
-        ))}
+        <div className="category-card-container pb-5">
+          {categories.map((category, index) => (
+            <CategoryCard key={index} category={category}></CategoryCard>
+          ))}
+        </div>
       </div>
     </div>
   );

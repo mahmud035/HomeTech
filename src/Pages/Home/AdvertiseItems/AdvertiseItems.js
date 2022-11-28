@@ -30,27 +30,32 @@ const AdvertiseItems = () => {
   }
 
   return (
-    <section>
-      {advertiseItems.length > 0 && (
-        <div className="container py-5">
-          <div className="text-center ">
-            <h3 className="fw-bold">Latest Promotions</h3>
-            <p>
-              Checkout the latest & upcoming promotions and offers at HomeTech
-            </p>
-          </div>
+    <div className="advertise-section py-3">
+      <section>
+        {advertiseItems.length > 0 && (
+          <div className="container py-5">
+            <div className="text-center ">
+              <h2 className="fw-bold">
+                Latest
+                <span style={{ color: 'aqua' }}> Promotions</span>
+              </h2>
+              <p>
+                Checkout the latest & upcoming promotions and offers at HomeTech
+              </p>
+            </div>
 
-          <div className="advertise-items-card-container py-5">
-            {advertiseItems.map((advertiseItem, index) => (
-              <AdvertiseItemCard
-                key={index}
-                advertiseItem={advertiseItem}
-              ></AdvertiseItemCard>
-            ))}
+            <div className="advertise-items-card-container py-5">
+              {advertiseItems.map((advertiseItem, index) => (
+                <AdvertiseItemCard
+                  key={index}
+                  advertiseItem={advertiseItem}
+                ></AdvertiseItemCard>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
-    </section>
+        )}
+      </section>
+    </div>
   );
 };
 

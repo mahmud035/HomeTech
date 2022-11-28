@@ -5,7 +5,10 @@ import Accordion from 'react-bootstrap/Accordion';
 const FAQ = () => {
   return (
     <div className="faq-accordion-container">
-      <h1>Frequently Asked Questions</h1>
+      <h2 className="fw-bold pb-4">
+        Frequently Asked
+        <span style={{ color: 'aqua' }}> Questions</span>
+      </h2>
       <Accordion className="w-50 mx-auto accordion-content">
         <Accordion.Item eventKey="0">
           <Accordion.Header>Is free shipping available?</Accordion.Header>

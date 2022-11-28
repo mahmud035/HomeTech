@@ -1,3 +1,8 @@
+.top-brands-section {
+  background-color: #1d3e53;
+  color: #fff;
+}
+
 .brands-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
