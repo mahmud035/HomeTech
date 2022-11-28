@@ -1,5 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useEffect } from 'react';
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 import useSetTitle from '../../../hooks/useSetTitle';
 import Loading from '../../Shared/Loading/Loading';
@@ -46,14 +48,34 @@ const MyProducts = () => {
         My <span style={{ color: 'aqua' }}>Products</span>
       </h1>
 
-      <div className="my-product-card-container pb-5">
-        {products.map((product, index) => (
-          <MyProductCard
-            key={index}
-            product={product}
-            refetch={refetch}
-          ></MyProductCard>
-        ))}
+      <div>
+        {products.length === 0 ? (
+          <>
+            <h3 className="d-flex flex-column gap-3 justify-content-center align-items-center min-vh-100">
+              Oops! You haven't add any product!!
+              <Link to="/dashboard/addproduct">
+                <Button
+                  variant="info"
+                  className="btn-register text-white fw-semibold"
+                >
+                  Add New Product
+                </Button>
+              </Link>
+            </h3>
+          </>
+        ) : (
+          <>
+            <div className="my-product-card-container pb-5">
+              {products.map((product, index) => (
+                <MyProductCard
+                  key={index}
+                  product={product}
+                  refetch={refetch}
+                ></MyProductCard>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

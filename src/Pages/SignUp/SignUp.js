@@ -153,7 +153,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="register-page-container">
+    <div className="sign-up-page-container">
       <div className="container form-page pt-5 pb-5">
         <div className="pt-5 px-4 form-container">
           <div className="text-center">

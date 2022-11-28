@@ -11,6 +11,7 @@ const CategoryProducts = () => {
 
   const categoryProducts = useLoaderData();
   useSetTitle('Category Products');
+  console.log(categoryProducts);
 
   return (
     <div className="category-products-page">

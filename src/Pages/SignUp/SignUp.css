@@ -1,3 +1,7 @@
+.sign-up-page-container {
+  background-color: #1a374d;
+}
+
 .social-accounts-sign-up p:nth-child(1),
 .social-accounts-sign-up p:nth-child(3) {
   height: 1.5px;

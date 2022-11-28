@@ -9,6 +9,7 @@
 }
 
 .my-product-card img {
+  overflow: hidden;
   height: 290px;
-  padding: 0.5rem 1rem;
+  border-radius: 5px;
 }

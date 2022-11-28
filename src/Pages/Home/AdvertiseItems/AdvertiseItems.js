@@ -30,7 +30,7 @@ const AdvertiseItems = () => {
   }
 
   return (
-    <div className="advertise-section py-3">
+    <div className="advertise-section ">
       <section>
         {advertiseItems.length > 0 && (
           <div className="container py-5">
