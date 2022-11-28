@@ -24,6 +24,29 @@
   gap: 1.3rem;
 }
 
+.current-login-user {
+  position: absolute;
+  top: 80vh;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.current-login-user img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.current-login-user p {
+  font-size: 13.6px;
+}
+
+@media (max-width: 991px) {
+  .current-login-user {
+    display: none;
+  }
+}
+
 @media (max-width: 575px) {
   .dashboard-sidebar {
     height: fit-content;

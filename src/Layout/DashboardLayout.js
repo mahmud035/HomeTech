@@ -10,6 +10,7 @@ import useAdmin from '../hooks/useAdmin';
 import { AuthContext } from '../context/AuthProvider';
 import useSeller from '../hooks/useSeller';
 import './DashboardLayout.css';
+import { FaUserCircle } from 'react-icons/fa';
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
@@ -21,7 +22,12 @@ const DashboardLayout = () => {
       <Header></Header>
       <Container>
         <Row>
-          <Col sm={4} md={3} xl={2} className=" dashboard-sidebar ">
+          <Col
+            sm={4}
+            md={3}
+            xl={2}
+            className=" dashboard-sidebar position-relative"
+          >
             <ButtonGroup className="dashboard-button-groups">
               <Link
                 to="/dashboard"
@@ -55,6 +61,30 @@ const DashboardLayout = () => {
                 </div>
               )}
             </ButtonGroup>
+
+            {/* Current Login User */}
+            <div>
+              <div className="current-login-user  ">
+                <div className="d-flex gap-3 align-items-center">
+                  {user?.photoURL ? (
+                    <img src={user?.photoURL} alt="" />
+                  ) : (
+                    <FaUserCircle size={65} />
+                  )}
+
+                  <div>
+                    <p className="mb-0 d-flex align-items-center">
+                      <strong>{user?.displayName.toUpperCase()}</strong>
+                    </p>
+                    <p className="mb-0">
+                      {(isAdmin && 'Admin') ||
+                        (isSeller && 'Seller') ||
+                        'Buyer'}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </Col>
           <Col sm={8} md={9} xl={10}>
             <Outlet></Outlet>
