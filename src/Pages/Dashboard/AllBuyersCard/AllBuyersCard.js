@@ -10,7 +10,7 @@ const AllBuyersCard = ({ buyer, refetch }) => {
   const { _id, name, image, email } = buyer;
 
   const handleDeleteBuyer = (id) => {
-    fetch(`http://localhost:5000/buyers/${id}`, {
+    fetch(`https://hometech-server-side.vercel.app/buyers/${id}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())

@@ -14,7 +14,7 @@ const MyOrders = () => {
   // const [isAdmin] = useAdmin(user?.email);
   // const [isSeller] = useSeller(user?.email);
 
-  const url = `http://localhost:5000/orders?email=${user?.email}`;
+  const url = `https://hometech-server-side.vercel.app/orders?email=${user?.email}`;
 
   const {
     isLoading,

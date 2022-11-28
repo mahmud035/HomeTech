@@ -8,7 +8,7 @@ const MyProductCard = ({ product, refetch }) => {
   // console.log(product);
 
   const handleAdvertisedProduct = (id) => {
-    fetch(`http://localhost:5000/seller/products/${id}`, {
+    fetch(`https://hometech-server-side.vercel.app/seller/products/${id}`, {
       method: 'PUT',
       headers: {
         authorization: `Bearer ${localStorage.getItem('accessToken2')}`,
@@ -25,7 +25,7 @@ const MyProductCard = ({ product, refetch }) => {
   };
 
   const handleDeleteProduct = (id) => {
-    fetch(`http://localhost:5000/products/${id}`, {
+    fetch(`https://hometech-server-side.vercel.app/products/${id}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())

@@ -5,7 +5,7 @@ import ReportedItemCard from '../ReportedItemCard/ReportedItemCard';
 import './ReportedItems.css';
 
 const ReportedItems = () => {
-  const url = 'http://localhost:5000/reporteditems';
+  const url = 'https://hometech-server-side.vercel.app/reporteditems';
 
   const {
     isLoading,

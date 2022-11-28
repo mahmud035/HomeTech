@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import Loading from '../../Shared/Loading/Loading';
 import CategoryCard from '../CategoryCard/CategoryCard';
 import './Category.css';
 
 const Category = () => {
-  const url = 'http://localhost:5000/categories';
+  const url = 'https://hometech-server-side.vercel.app/categories';
   const {
     isLoading,
     isError,
@@ -20,7 +21,7 @@ const Category = () => {
   });
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <Loading></Loading>;
   }
 
   if (isError) {

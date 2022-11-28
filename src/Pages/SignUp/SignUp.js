@@ -101,7 +101,7 @@ const SignUp = () => {
     const user = { name, email, image: imageURL, role: 'User' };
     console.log(user);
 
-    fetch('http://localhost:5000/users', {
+    fetch('https://hometech-server-side.vercel.app/users', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

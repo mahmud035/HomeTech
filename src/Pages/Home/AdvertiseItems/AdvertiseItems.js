@@ -5,7 +5,7 @@ import AdvertiseItemCard from '../AdvertiseItemCard/AdvertiseItemCard';
 import './AdvertiseItems.css';
 
 const AdvertiseItems = () => {
-  const url = 'http://localhost:5000/advertiseitems';
+  const url = 'https://hometech-server-side.vercel.app/advertiseitems';
 
   const {
     isLoading,

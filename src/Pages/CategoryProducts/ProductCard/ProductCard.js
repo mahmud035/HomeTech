@@ -29,7 +29,7 @@ const ProductCard = ({ product, setProduct, setModalShow }) => {
   });
 
   const handleReportItem = (id) => {
-    fetch(`http://localhost:5000/products/${id}`, {
+    fetch(`https://hometech-server-side.vercel.app/products/${id}`, {
       method: 'PUT',
     })
       .then((res) => res.json())

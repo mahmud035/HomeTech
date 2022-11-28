@@ -5,7 +5,7 @@ import Loading from '../../Shared/Loading/Loading';
 import AllBuyersCard from '../AllBuyersCard/AllBuyersCard';
 
 const AllBuyers = () => {
-  const url = 'http://localhost:5000/buyers';
+  const url = 'https://hometech-server-side.vercel.app/buyers';
 
   const {
     isLoading,

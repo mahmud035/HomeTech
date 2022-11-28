@@ -19,7 +19,7 @@ const CheckoutForm = ({ product }) => {
   console.log(product);
 
   useEffect(() => {
-    fetch('http://localhost:5000/create-payment-intent', {
+    fetch('https://hometech-server-side.vercel.app/create-payment-intent', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ const CheckoutForm = ({ product }) => {
       };
 
       //* store payment info in the database
-      fetch('http://localhost:5000/payments', {
+      fetch('https://hometech-server-side.vercel.app/payments', {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
@@ -104,9 +104,12 @@ const CheckoutForm = ({ product }) => {
             setTransactionId(paymentIntent.id);
             toast.success('Congrats! your payment is completed');
 
-            fetch(`http://localhost:5000/products/salesstatus/${productName}`, {
-              method: 'PUT',
-            })
+            fetch(
+              `https://hometech-server-side.vercel.app/products/salesstatus/${productName}`,
+              {
+                method: 'PUT',
+              }
+            )
               .then((res) => res.json())
               .then((data) => {
                 console.log(data);

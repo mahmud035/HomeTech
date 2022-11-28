@@ -18,7 +18,7 @@ const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   // const [accountType, setAccountType] = useState('User');
 
-  const url = `http://localhost:5000/users/${user?.email}`;
+  const url = `https://hometech-server-side.vercel.app/users/${user?.email}`;
   const { data: savedUser = {}, refetch } = useQuery({
     queryKey: ['users', user?.email],
     queryFn: async () => {
@@ -35,9 +35,12 @@ const Header = () => {
   // console.log(savedUser);
 
   const handleSellerAccount = () => {
-    fetch(`http://localhost:5000/users/seller/${user?.email}`, {
-      method: 'PUT',
-    })
+    fetch(
+      `https://hometech-server-side.vercel.app/users/seller/${user?.email}`,
+      {
+        method: 'PUT',
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

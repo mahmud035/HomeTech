@@ -3,7 +3,7 @@ export const setSocialLoginToken = (user) => {
     email: user?.email,
   };
 
-  fetch('http://localhost:5000/jwt', {
+  fetch('https://hometech-server-side.vercel.app/jwt', {
     method: 'POST',
     headers: {
       'content-type': 'application/json',

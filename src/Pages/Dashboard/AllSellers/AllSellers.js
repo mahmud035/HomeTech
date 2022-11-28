@@ -5,7 +5,7 @@ import AllSellersCard from '../AllSellersCard/AllSellersCard';
 import './AllSellers.css';
 
 const AllSellers = () => {
-  const url = 'http://localhost:5000/sellers';
+  const url = 'https://hometech-server-side.vercel.app/sellers';
 
   const {
     isLoading,

@@ -11,7 +11,7 @@ const AllSellersCard = ({ seller, refetch }) => {
   const { _id, name, image, email } = seller;
 
   const handleVerifySeller = (id) => {
-    fetch(`http://localhost:5000/sellers/${id}`, {
+    fetch(`https://hometech-server-side.vercel.app/sellers/${id}`, {
       method: 'PUT',
     })
       .then((res) => res.json())
@@ -21,9 +21,12 @@ const AllSellersCard = ({ seller, refetch }) => {
           refetch();
 
           // update Seller verify status in the productsCollection
-          fetch(`http://localhost:5000/products/verify/${email}`, {
-            method: 'PUT',
-          })
+          fetch(
+            `https://hometech-server-side.vercel.app/products/verify/${email}`,
+            {
+              method: 'PUT',
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               console.log(data);
@@ -33,7 +36,7 @@ const AllSellersCard = ({ seller, refetch }) => {
   };
 
   const handleDeleteSeller = (id) => {
-    fetch(`http://localhost:5000/sellers/${id}`, {
+    fetch(`https://hometech-server-side.vercel.app/sellers/${id}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())

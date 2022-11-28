@@ -68,7 +68,7 @@ const AddProduct = () => {
 
           // console.log(product);
 
-          fetch('http://localhost:5000/products', {
+          fetch('https://hometech-server-side.vercel.app/products', {
             method: 'POST',
             headers: {
               'content-type': 'application/json',

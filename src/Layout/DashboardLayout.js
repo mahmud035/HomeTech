@@ -20,8 +20,13 @@ const DashboardLayout = () => {
       <Header></Header>
       <Container>
         <Row>
-          <Col sm={4} md={3} xl={2} style={{ backgroundColor: 'blue' }}>
-            <ButtonGroup vertical>
+          <Col
+            sm={4}
+            md={3}
+            xl={2}
+            style={{ backgroundColor: 'lightgray', padding: '2rem' }}
+          >
+            <ButtonGroup className=" dashboard-sidebar ">
               <Link
                 to="/dashboard"
                 // className={`${isSeller || isAdmin ? 'd-none' : ''}`}

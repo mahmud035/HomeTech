@@ -12,7 +12,7 @@ const MyProducts = () => {
     window.scrollTo(0, 0);
   });
 
-  const url = `http://localhost:5000/products/seller?email=${user?.email}`;
+  const url = `https://hometech-server-side.vercel.app/products/seller?email=${user?.email}`;
 
   const {
     isLoading,

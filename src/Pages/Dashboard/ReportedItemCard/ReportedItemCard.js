@@ -7,7 +7,7 @@ const ReportedItemCard = ({ reporteditem, refetch }) => {
   const { _id, name, image } = reporteditem;
 
   const handleDeleteReportedItem = (id) => {
-    fetch(`http://localhost:5000/reporteditems/${id}`, {
+    fetch(`https://hometech-server-side.vercel.app/reporteditems/${id}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())

@@ -6,7 +6,7 @@ import CategoryProducts from '../../Pages/CategoryProducts/CategoryProducts/Cate
 import AddProduct from '../../Pages/Dashboard/AddProduct/AddProduct';
 import AllBuyers from '../../Pages/Dashboard/AllBuyers/AllBuyers';
 import AllSellers from '../../Pages/Dashboard/AllSellers/AllSellers';
-import AllUsers from '../../Pages/Dashboard/AllUsers/AllUsers';
+
 import MyOrders from '../../Pages/Dashboard/MyOrders/MyOrders';
 import MyProducts from '../../Pages/Dashboard/MyProducts/MyProducts';
 import Payment from '../../Pages/Dashboard/Payment/Payment/Payment';
@@ -41,7 +41,9 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/categories/${params.categoryname}`),
+          fetch(
+            `https://hometech-server-side.vercel.app/categories/${params.categoryname}`
+          ),
       },
       {
         path: '/blog',
@@ -70,14 +72,6 @@ const router = createBrowserRouter([
       {
         path: '/dashboard',
         element: <MyOrders></MyOrders>,
-      },
-      {
-        path: '/dashboard/allusers',
-        element: (
-          <AdminRoute>
-            <AllUsers></AllUsers>
-          </AdminRoute>
-        ),
       },
       {
         path: '/dashboard/addproduct',
@@ -124,7 +118,9 @@ const router = createBrowserRouter([
         path: '/dashboard/payment/:id',
         element: <Payment></Payment>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(
+            `https://hometech-server-side.vercel.app/products/${params.id}`
+          ),
       },
     ],
   },
