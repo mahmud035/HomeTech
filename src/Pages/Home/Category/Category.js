@@ -10,6 +10,8 @@ const Category = () => {
 
   const url = 'https://hometech-server-side.vercel.app/categories';
 
+  //* Load data Using Axios
+
   useEffect(() => {
     axios.get(url).then((res) => setCategories(res.data));
   }, []);
