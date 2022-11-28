@@ -1,11 +1,11 @@
 .my-product-card-container {
   display: grid;
-  grid-template-columns: 320px 320px 320px;
+  grid-template-columns: 310px 310px 310px;
   gap: 1.5rem;
   justify-content: center;
 }
 
-@media (min-width: 992px) and (max-width: 1439px) {
+@media (min-width: 992px) and (max-width: 1450px) {
   .my-product-card-container {
     grid-template-columns: 320px 320px;
   }

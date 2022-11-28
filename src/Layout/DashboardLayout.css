@@ -1,14 +1,17 @@
 .dashboard-sidebar {
   height: 100vh;
   display: flex;
-  justify-content: center;
   padding: 4rem 2rem 4rem;
   background-color: lightsteelblue;
   border-radius: 0 0 8px 8px;
 }
 
+.dashboard-sidebar a {
+  text-decoration: none;
+}
+
 .dashboard-sidebar button {
-  min-width: 130px;
+  font-size: 14px;
 }
 
 .dashboard-button-groups {
@@ -47,8 +50,9 @@
   }
 }
 
-@media (max-width: 575px) {
+@media (max-width: 767px) {
   .dashboard-sidebar {
+    justify-content: center;
     height: fit-content;
     padding: 3rem 2rem 3rem;
   }

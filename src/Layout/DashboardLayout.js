@@ -11,6 +11,12 @@ import { AuthContext } from '../context/AuthProvider';
 import useSeller from '../hooks/useSeller';
 import './DashboardLayout.css';
 import { FaUserCircle } from 'react-icons/fa';
+import { BsCartCheck } from 'react-icons/bs';
+import { AiOutlineAppstoreAdd } from 'react-icons/ai';
+import { TbBrandProducthunt } from 'react-icons/tb';
+import { MdReportProblem } from 'react-icons/md';
+import { GrUserSettings } from 'react-icons/gr';
+import { RiUserSettingsLine } from 'react-icons/ri';
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
@@ -23,7 +29,7 @@ const DashboardLayout = () => {
       <Container>
         <Row>
           <Col
-            sm={4}
+            sm={12}
             md={3}
             xl={2}
             className=" dashboard-sidebar position-relative"
@@ -31,18 +37,28 @@ const DashboardLayout = () => {
             <ButtonGroup className="dashboard-button-groups">
               <Link
                 to="/dashboard"
+
                 // className={`${isSeller || isAdmin ? 'd-none' : ''}`}
               >
-                <Button>My Orders</Button>
+                <Button className="d-flex align-items-center">
+                  <BsCartCheck size={28} className="me-2" />
+                  My Orders
+                </Button>
               </Link>
 
               {isSeller && (
                 <div className="seller-buttons">
                   <Link to="/dashboard/addproduct">
-                    <Button>Add A Product</Button>
+                    <Button className="d-flex align-items-center">
+                      <AiOutlineAppstoreAdd size={28} className="me-2" />
+                      Add A Product
+                    </Button>
                   </Link>
                   <Link to="/dashboard/myproducts">
-                    <Button>My Products</Button>
+                    <Button className="d-flex align-items-center">
+                      <TbBrandProducthunt size={28} className="me-2" />
+                      My Products
+                    </Button>
                   </Link>
                 </div>
               )}
@@ -50,13 +66,22 @@ const DashboardLayout = () => {
               {isAdmin && (
                 <div className="admin-buttons">
                   <Link to="/dashboard/allbuyers">
-                    <Button>All Buyers</Button>
+                    <Button className="d-flex align-items-center">
+                      <RiUserSettingsLine size={28} className="me-2" />
+                      All Buyers
+                    </Button>
                   </Link>
                   <Link to="/dashboard/allsellers">
-                    <Button>All Sellers</Button>
+                    <Button className="d-flex align-items-center">
+                      <GrUserSettings size={28} className="me-2" />
+                      All Sellers
+                    </Button>
                   </Link>
                   <Link to="/dashboard/reporteditems">
-                    <Button>Reported Items</Button>
+                    <Button className="d-flex align-items-center">
+                      <MdReportProblem size={28} className="me-2" />
+                      Reported Items
+                    </Button>
                   </Link>
                 </div>
               )}
@@ -86,7 +111,7 @@ const DashboardLayout = () => {
               </div>
             </div>
           </Col>
-          <Col sm={8} md={9} xl={10}>
+          <Col sm={12} md={9} xl={10}>
             <Outlet></Outlet>
           </Col>
         </Row>
