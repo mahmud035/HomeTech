@@ -2,6 +2,14 @@
   box-sizing: border-box;
   width: 100%;
   padding: 2rem;
+  border-radius: 5px;
+  background-color: #256d85;
+  color: #fff;
+  transition: all 0.35s ease-in-out;
+}
+
+.report-card:hover {
+  background-color: #205375;
 }
 
 img.card-image {

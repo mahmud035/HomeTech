@@ -1,17 +1,26 @@
+.dashboard-page {
+  background-color: #1a374d;
+  color: #fff;
+}
+
 .dashboard-sidebar {
   height: 100vh;
   display: flex;
   padding: 4rem 2rem 4rem;
-  background-color: lightsteelblue;
-  border-radius: 0 0 8px 8px;
+  background-color: #254b62;
+  color: #fff;
+  /* border-radius: 8px; */
 }
 
 .dashboard-sidebar a {
   text-decoration: none;
+  color: #fff;
 }
 
 .dashboard-sidebar button {
   font-size: 14px;
+  color: #fff;
+  font-weight: 500;
 }
 
 .dashboard-button-groups {

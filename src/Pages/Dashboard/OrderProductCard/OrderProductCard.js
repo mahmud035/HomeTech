@@ -11,23 +11,30 @@ const OrderProductCard = ({ order }) => {
     <div>
       <Card className="order-product-card border-0 shadow p-2 h-100">
         <Card.Img variant="top" src={image} />
-        <Card.Body className="pt-0">
+        <Card.Body className="pt-4">
           <Card.Title>{productName}</Card.Title>
           <p className="card-text mb-1">
             <strong>Price:</strong>&nbsp;
-            <span className="text-success fw-bold">{resalePrice} TK</span>
+            <span className="fw-bold">{resalePrice} TK</span>
           </p>
 
           {!order?.paid && (
             <Link to={`/dashboard/payment/${_id}`}>
-              <Button className="mt-3" variant="primary">
-                Pay
+              <Button
+                className="mt-3 btn-register fw-semibold"
+                variant="primary"
+              >
+                Pay Now
               </Button>
             </Link>
           )}
 
           {order?.paid && (
-            <Button className="mt-3" variant="primary" disabled>
+            <Button
+              className="mt-3 btn-register fw-semibold"
+              variant="primary"
+              disabled
+            >
               Paid
             </Button>
           )}

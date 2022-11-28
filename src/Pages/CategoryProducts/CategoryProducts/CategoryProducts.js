@@ -15,7 +15,9 @@ const CategoryProducts = () => {
   return (
     <div className="category-products-page">
       <section className="container">
-        <h2 className="text-center py-5">Category Products</h2>
+        <h2 className="text-center py-5">
+          Category <span style={{ color: 'aqua' }}>Products</span>
+        </h2>
 
         <div className="product-card-container pb-5">
           {categoryProducts.map((product, index) => (

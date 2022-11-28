@@ -1,3 +1,13 @@
+.order-product-card {
+  background-color: #256d85;
+  color: #fff;
+  transition: all 0.35s ease-in-out;
+}
+
+.order-product-card:hover {
+  background-color: #205375;
+}
+
 .order-product-card img {
-  padding: 0 1rem;
+  border-radius: 5px;
 }

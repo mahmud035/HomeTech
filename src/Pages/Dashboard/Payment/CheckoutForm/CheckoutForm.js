@@ -132,27 +132,29 @@ const CheckoutForm = ({ product }) => {
             style: {
               base: {
                 fontSize: '16px',
-                color: '#424770',
+                color: '#fff',
                 '::placeholder': {
-                  color: '#aab7c4',
+                  color: '#fff',
                 },
               },
               invalid: {
-                color: '#9e2146',
+                color: 'aqua',
               },
             },
           }}
         />
 
         <button
-          className="btn btn-sm mt-4 btn-primary"
+          className="btn btn-sm mt-4 btn-register fw-semibold text-white"
           type="submit"
           disabled={!stripe || !clientSecret || processing}
         >
           Pay Now
         </button>
       </form>
-      <p className="text-danger text-center pt-2 ">{cardError}</p>
+      <p className="text-danger text-center pt-2 " style={{ color: 'aqua' }}>
+        {cardError}
+      </p>
 
       {/* {success && (
         <div>

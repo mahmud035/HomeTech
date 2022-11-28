@@ -58,7 +58,7 @@ const AllSellersCard = ({ seller, refetch }) => {
             <FaUser size={16} className="me-2" />
             <strong>{name.toUpperCase()}</strong>
             {seller?.verified && (
-              <p style={{ color: 'blue' }} className="mb-1 ms-1 fw-semibold">
+              <p style={{ color: 'aqua' }} className="mb-1 ms-1 fw-semibold">
                 <MdVerifiedUser size={16} />
               </p>
             )}
@@ -78,7 +78,7 @@ const AllSellersCard = ({ seller, refetch }) => {
       <Button
         onClick={() => handleVerifySeller(_id)}
         disabled={seller?.verified ? true : false}
-        className="mt-4 "
+        className="mt-4 btn-register fw-semibold"
         variant="primary"
         size="sm"
       >

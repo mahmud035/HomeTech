@@ -9,12 +9,11 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 
 const Payment = () => {
   const product = useLoaderData();
-  const { productName, resalePrice } = product;
+  const { resalePrice } = product;
 
   return (
-    <div className="py-4">
-      <h2>Payment for {productName}</h2>
-      <h5>
+    <div className="py-5">
+      <h5 className="text-center">
         Please pay <strong>{resalePrice} TK </strong>for the product
       </h5>
 

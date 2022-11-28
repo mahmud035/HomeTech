@@ -50,7 +50,7 @@ const BookingModal = ({ show, product, setProduct }) => {
 
   return (
     <div>
-      <Modal show={show} backdrop="static" keyboard={false}>
+      <Modal show={show} centered backdrop="static" keyboard={false}>
         <Modal.Header>
           <Modal.Title>{name}</Modal.Title>
           <AiFillCloseCircle

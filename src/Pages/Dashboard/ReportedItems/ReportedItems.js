@@ -35,7 +35,9 @@ const ReportedItems = () => {
 
   return (
     <div className="py-4">
-      <h1 className="text-center pb-3">Reported Items</h1>
+      <h1 className="text-center pb-3">
+        Reported <span style={{ color: 'aqua' }}>Items</span>
+      </h1>
 
       <div className="reported-items-card-container">
         {reporteditems.map((reporteditem, index) => (

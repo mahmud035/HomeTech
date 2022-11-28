@@ -2,6 +2,14 @@
   box-sizing: border-box;
   width: 100%;
   padding: 1.5rem;
+  background-color: #256d85;
+  color: #fff;
+  transition: all 0.35s ease-in-out;
+  border-radius: 5px;
+}
+
+.buyer-card:hover {
+  background-color: #205375;
 }
 
 img.card-image {

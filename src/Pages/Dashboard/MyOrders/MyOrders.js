@@ -52,14 +52,18 @@ const MyOrders = () => {
           <h3 className="d-flex flex-column gap-3 justify-content-center align-items-center min-vh-100">
             Oops! You haven't order any product!!
             <Link to="/">
-              <Button variant="info">Shop Now</Button>
+              <Button variant="info" className="btn-register">
+                Shop Now
+              </Button>
             </Link>
           </h3>
         </>
       ) : (
         <>
           <div className="py-5">
-            <h1 className="text-center pb-4">My Orders</h1>
+            <h1 className="text-center pb-4">
+              My <span style={{ color: 'aqua' }}>Orders</span>
+            </h1>
 
             <div className="order-product-card-container">
               {orders.map((order, index) => (

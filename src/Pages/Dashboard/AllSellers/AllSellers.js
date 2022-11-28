@@ -35,7 +35,9 @@ const AllSellers = () => {
 
   return (
     <div className="py-4">
-      <h1 className="text-center pb-3">All Sellers</h1>
+      <h1 className="text-center pb-3">
+        All <span style={{ color: 'aqua' }}>Sellers</span>
+      </h1>
 
       <div className="all-sellers-card-container">
         {sellers.map((seller, index) => (
