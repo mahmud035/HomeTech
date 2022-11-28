@@ -9,6 +9,7 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import useAdmin from '../hooks/useAdmin';
 import { AuthContext } from '../context/AuthProvider';
 import useSeller from '../hooks/useSeller';
+import './DashboardLayout.css';
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
@@ -20,13 +21,8 @@ const DashboardLayout = () => {
       <Header></Header>
       <Container>
         <Row>
-          <Col
-            sm={4}
-            md={3}
-            xl={2}
-            style={{ backgroundColor: 'lightgray', padding: '2rem' }}
-          >
-            <ButtonGroup className=" dashboard-sidebar ">
+          <Col sm={4} md={3} xl={2} className=" dashboard-sidebar ">
+            <ButtonGroup className="dashboard-button-groups">
               <Link
                 to="/dashboard"
                 // className={`${isSeller || isAdmin ? 'd-none' : ''}`}
@@ -35,18 +31,18 @@ const DashboardLayout = () => {
               </Link>
 
               {isSeller && (
-                <>
+                <div className="seller-buttons">
                   <Link to="/dashboard/addproduct">
                     <Button>Add A Product</Button>
                   </Link>
                   <Link to="/dashboard/myproducts">
                     <Button>My Products</Button>
                   </Link>
-                </>
+                </div>
               )}
 
               {isAdmin && (
-                <>
+                <div className="admin-buttons">
                   <Link to="/dashboard/allbuyers">
                     <Button>All Buyers</Button>
                   </Link>
@@ -56,7 +52,7 @@ const DashboardLayout = () => {
                   <Link to="/dashboard/reporteditems">
                     <Button>Reported Items</Button>
                   </Link>
-                </>
+                </div>
               )}
             </ButtonGroup>
           </Col>

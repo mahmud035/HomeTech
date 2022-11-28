@@ -1,4 +1,32 @@
 .dashboard-sidebar {
-  height: 500px;
-  background-color: red !important;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 4rem 2rem 4rem;
+  background-color: lightsteelblue;
+  border-radius: 0 0 8px 8px;
+}
+
+.dashboard-sidebar button {
+  min-width: 130px;
+}
+
+.dashboard-button-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.admin-buttons,
+.seller-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+@media (max-width: 575px) {
+  .dashboard-sidebar {
+    height: fit-content;
+    padding: 3rem 2rem 3rem;
+  }
 }
