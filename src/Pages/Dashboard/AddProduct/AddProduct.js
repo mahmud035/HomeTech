@@ -94,8 +94,10 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="py-4">
-      <h1 className="text-center">Add A Product</h1>
+    <div className="py-4 pb-5">
+      <h1 className="text-center">
+        Add A <span style={{ color: 'aqua' }}>Product</span>
+      </h1>
 
       <div className="p-3">
         <Form
@@ -110,7 +112,7 @@ const AddProduct = () => {
             />
 
             {errors.name && (
-              <small className="text-danger mb-0">{errors.name?.message}</small>
+              <small className=" mb-0">{errors.name?.message}</small>
             )}
           </Form.Group>
 
@@ -140,9 +142,7 @@ const AddProduct = () => {
             <option value="Fair">Fair</option>
           </Form.Select>
           {errors.productCondition && (
-            <small className="text-danger mb-0">
-              {errors.productCondition?.message}
-            </small>
+            <small className=" mb-0">{errors.productCondition?.message}</small>
           )}
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -153,9 +153,7 @@ const AddProduct = () => {
               accept="image/*"
             />
 
-            {errors.image && (
-              <p className="text-danger mb-0">{errors.image?.message}</p>
-            )}
+            {errors.image && <p className=" mb-0">{errors.image?.message}</p>}
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -166,9 +164,7 @@ const AddProduct = () => {
             />
 
             {errors.resalePrice && (
-              <small className="text-danger mb-0">
-                {errors.resalePrice?.message}
-              </small>
+              <small className=" mb-0">{errors.resalePrice?.message}</small>
             )}
           </Form.Group>
 
@@ -180,9 +176,7 @@ const AddProduct = () => {
             />
 
             {errors.originalPrice && (
-              <small className="text-danger mb-0">
-                {errors.originalPrice?.message}
-              </small>
+              <small className=" mb-0">{errors.originalPrice?.message}</small>
             )}
           </Form.Group>
 
@@ -196,9 +190,7 @@ const AddProduct = () => {
             />
 
             {errors.yearsOfUse && (
-              <small className="text-danger mb-0">
-                {errors.yearsOfUse?.message}
-              </small>
+              <small className=" mb-0">{errors.yearsOfUse?.message}</small>
             )}
           </Form.Group>
 
@@ -212,9 +204,7 @@ const AddProduct = () => {
             />
 
             {errors.phone && (
-              <small className="text-danger mb-0">
-                {errors.phone?.message}
-              </small>
+              <small className=" mb-0">{errors.phone?.message}</small>
             )}
           </Form.Group>
 
@@ -228,9 +218,7 @@ const AddProduct = () => {
             />
 
             {errors.location && (
-              <small className="text-danger mb-0">
-                {errors.location?.message}
-              </small>
+              <small className=" mb-0">{errors.location?.message}</small>
             )}
           </Form.Group>
 
@@ -244,9 +232,7 @@ const AddProduct = () => {
             />
 
             {errors.yearOfPurchase && (
-              <small className="text-danger mb-0">
-                {errors.yearOfPurchase?.message}
-              </small>
+              <small className=" mb-0">{errors.yearOfPurchase?.message}</small>
             )}
           </Form.Group>
 

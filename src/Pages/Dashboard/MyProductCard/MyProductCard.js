@@ -46,17 +46,17 @@ const MyProductCard = ({ product, refetch }) => {
           <Card.Title style={{ fontSize: '18px' }}>{name}</Card.Title>
           <p className="card-text mb-1">
             <strong>Price:</strong>&nbsp;
-            <span className="text-success fw-bold">{resalePrice} TK</span>
+            <span className=" fw-bold">{resalePrice} TK</span>
           </p>
           <p className="card-text mb-1">
             <strong>Status:</strong>&nbsp;
-            <span className="text-success fw-bold">{salesStatus}</span>
+            <span className=" fw-bold">{salesStatus}</span>
           </p>
           <div className="d-flex gap-3">
             {salesStatus === 'available' && (
               <Button
                 onClick={() => handleAdvertisedProduct(_id)}
-                className="mt-3 "
+                className="mt-3 btn-register fw-semibold"
                 variant="primary"
                 disabled={isAdvertise ? true : false}
               >
@@ -65,7 +65,7 @@ const MyProductCard = ({ product, refetch }) => {
             )}
             <Button
               onClick={() => handleDeleteProduct(_id)}
-              className="mt-3"
+              className="mt-3 btn-log-out fw-semibold"
               variant="danger"
             >
               Delete

@@ -42,9 +42,11 @@ const MyProducts = () => {
 
   return (
     <div className="py-4 ">
-      <h1 className="text-center pb-3">My Products</h1>
+      <h1 className="text-center pb-3">
+        My <span style={{ color: 'aqua' }}>Products</span>
+      </h1>
 
-      <div className="my-product-card-container">
+      <div className="my-product-card-container pb-5">
         {products.map((product, index) => (
           <MyProductCard
             key={index}

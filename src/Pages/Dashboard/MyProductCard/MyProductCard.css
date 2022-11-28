@@ -1,3 +1,13 @@
+.my-product-card {
+  background-color: #256d85;
+  color: #fff;
+  transition: all 0.35s ease-in-out;
+}
+
+.my-product-card:hover {
+  background-color: #205375;
+}
+
 .my-product-card img {
   height: 290px;
   padding: 0.5rem 1rem;

@@ -52,7 +52,10 @@ const MyOrders = () => {
           <h3 className="d-flex flex-column gap-3 justify-content-center align-items-center min-vh-100">
             Oops! You haven't order any product!!
             <Link to="/">
-              <Button variant="info" className="btn-register">
+              <Button
+                variant="info"
+                className="btn-register text-white fw-semibold"
+              >
                 Shop Now
               </Button>
             </Link>
