@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import useSetTitle from '../../../hooks/useSetTitle';
 import AdvertiseItems from '../AdvertiseItems/AdvertiseItems';
 import Banner from '../Banner/Banner';
 import Category from '../Category/Category';
@@ -10,6 +11,8 @@ const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   });
+
+  useSetTitle('Home');
 
   return (
     <div>

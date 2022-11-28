@@ -2,7 +2,7 @@
 
 #### Project Name: HomeTech
 
-#### Live Website: <a href="https://nurturing-minds-client-side.web.app/">HomeTech</a>
+#### Live Website: <a href="https://hometech-be5e9.web.app/">HomeTech</a>
 
 ### Description
 

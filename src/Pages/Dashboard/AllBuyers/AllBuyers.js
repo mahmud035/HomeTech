@@ -3,8 +3,11 @@ import './AllBuyer.css';
 import React from 'react';
 import Loading from '../../Shared/Loading/Loading';
 import AllBuyersCard from '../AllBuyersCard/AllBuyersCard';
+import useSetTitle from '../../../hooks/useSetTitle';
 
 const AllBuyers = () => {
+  useSetTitle('All Buyers');
+
   const url = 'https://hometech-server-side.vercel.app/buyers';
 
   const {

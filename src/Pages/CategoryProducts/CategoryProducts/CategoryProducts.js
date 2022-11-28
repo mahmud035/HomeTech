@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useSetTitle from '../../../hooks/useSetTitle';
 import BookingModal from '../BookingModal/BookingModal';
 import ProductCard from '../ProductCard/ProductCard';
 import './CategoryProducts.css';
@@ -9,10 +10,11 @@ const CategoryProducts = () => {
   const [modalShow, setModalShow] = useState(false);
 
   const categoryProducts = useLoaderData();
+  useSetTitle('Category Products');
 
   return (
     <section className="container">
-      <h2 className="text-center py-5">All Products</h2>
+      <h2 className="text-center py-5">Category Products</h2>
 
       <div className="product-card-container pb-5">
         {categoryProducts.map((product, index) => (

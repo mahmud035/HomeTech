@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../context/AuthProvider';
 import { useNavigate } from 'react-router-dom';
+import useSetTitle from '../../../hooks/useSetTitle';
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
@@ -15,6 +16,7 @@ const AddProduct = () => {
     handleSubmit,
   } = useForm();
   const navigate = useNavigate();
+  useSetTitle('Add A Product');
 
   const date = new Date();
   const options = {

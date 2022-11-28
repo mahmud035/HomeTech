@@ -6,6 +6,7 @@ import Table from 'react-bootstrap/Table';
 
 const Blog = () => {
   useSetTitle('Blog');
+
   return (
     <div className="accordion-container">
       <h1>Questions & Answer</h1>

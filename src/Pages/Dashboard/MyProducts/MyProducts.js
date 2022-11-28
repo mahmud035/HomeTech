@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useEffect } from 'react';
 import { AuthContext } from '../../../context/AuthProvider';
+import useSetTitle from '../../../hooks/useSetTitle';
 import Loading from '../../Shared/Loading/Loading';
 import MyProductCard from '../MyProductCard/MyProductCard';
 import './MyProducts.css';
@@ -11,6 +12,8 @@ const MyProducts = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   });
+
+  useSetTitle('My Products');
 
   const url = `https://hometech-server-side.vercel.app/products/seller?email=${user?.email}`;
 

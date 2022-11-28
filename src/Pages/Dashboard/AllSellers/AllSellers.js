@@ -1,10 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import useSetTitle from '../../../hooks/useSetTitle';
 import Loading from '../../Shared/Loading/Loading';
 import AllSellersCard from '../AllSellersCard/AllSellersCard';
 import './AllSellers.css';
 
 const AllSellers = () => {
+  useSetTitle('All Sellers');
+
   const url = 'https://hometech-server-side.vercel.app/sellers';
 
   const {
