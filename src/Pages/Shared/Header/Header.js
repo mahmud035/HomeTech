@@ -147,7 +147,7 @@ const Header = () => {
                       <DropdownButton
                         id="dropdown-basic-button"
                         title={savedUser?.role}
-                        className="border-0 fw-bold"
+                        className="border-0 fw-semibold "
                       >
                         <>
                           <OverlayTrigger

@@ -46,34 +46,37 @@ const ProductCard = ({ product, setProduct, setModalShow }) => {
 
   return (
     <div>
-      <div className="card mb-3 p-4 border-0 shadow">
-        <div className="row g-0">
+      <div className="category-product-card card mb-3 p-4 border-0 shadow">
+        <div className="row g-2">
           <div className="col-md-4">
-            <img src={image} className="img-fluid rounded-start" alt="..." />
+            <img src={image} className="img-fluid rounded h-100" alt="..." />
           </div>
           <div className="col-md-8">
             <div className="card-body">
               <h5 className="card-title">{name}</h5>
               <p className="card-text mb-1">
-                <small className="text-muted">
+                <small className="text-white">
                   Posted on {postedTime}, {location}
                 </small>
               </p>
               <p className="card-text mb-1">
                 <strong>Resale Price:</strong>&nbsp;
-                <span className="text-success fw-bold">{resalePrice} TK</span>
+                <span className=" fw-bold">{resalePrice} TK</span>
               </p>
               <p className="card-text mb-1">
-                Original Price:
-                <span className="text-success"> {originalPrice} TK</span>
+                Original Price:&nbsp;
+                {originalPrice} TK
               </p>
               <p className="card-text mb-1">Used: {yearsOfUse}</p>
               <div className="d-flex gap-3 align-items-center">
                 <p className="card-text mb-1">Seller: {sellerName}</p>
                 {verified && (
                   <p
-                    style={{ color: 'blue', fontSize: '11.6px' }}
-                    className="mb-1 fw-semibold"
+                    style={{
+                      color: 'aqua',
+                      fontSize: '11.6px',
+                    }}
+                    className="mb-1 fw-bold"
                   >
                     <MdVerifiedUser size={20} />
                     <small> VERIFIED SELLER</small>
@@ -89,7 +92,7 @@ const ProductCard = ({ product, setProduct, setModalShow }) => {
                     setModalShow(true);
                   }}
                   variant="primary"
-                  className="mt-3"
+                  className="mt-3 fw-semibold btn-register text-white"
                 >
                   Book Now
                 </Button>

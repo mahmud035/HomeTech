@@ -9,8 +9,8 @@ import acer from '../../../assets/images/brands/acer.webp';
 
 const TopBrands = () => {
   return (
-    <div className="top-brands-section">
-      <section className="container pb-3">
+    <div className="top-brands-section pt-1 pb-4">
+      <section className="container ">
         <div className="text-center py-5">
           <h2 className="fw-bold pb-4">
             Top <span style={{ color: 'aqua' }}>Brands</span>

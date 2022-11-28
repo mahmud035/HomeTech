@@ -11,7 +11,7 @@ import { FaFacebookSquare, FaInstagram, FaLinkedin } from 'react-icons/fa';
 const Footer = () => {
   return (
     <div className="footer-container">
-      <Container className="footer pt-5 pb-4">
+      <Container className="footer pt-5 pb-4 px-4">
         <Row>
           <Col xs={6} lg={2}>
             <div className="pb-3">
@@ -97,7 +97,7 @@ const Footer = () => {
 
         <div>
           <p className="text-center pt-4">
-            Copyright &copy; 2022 Nurturing Minds. All rights reserved.
+            Copyright &copy; 2022 HomeTech. All rights reserved.
           </p>
         </div>
       </Container>

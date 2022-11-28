@@ -1,0 +1,11 @@
+.category-product-card {
+  background-color: #256d85;
+  color: #fff;
+  font-size: 18px;
+  transition: all 0.35s ease-in-out;
+}
+
+.category-product-card:hover {
+  background-color: #205375;
+  cursor: pointer;
+}

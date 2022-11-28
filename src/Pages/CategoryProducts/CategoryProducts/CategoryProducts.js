@@ -13,29 +13,31 @@ const CategoryProducts = () => {
   useSetTitle('Category Products');
 
   return (
-    <section className="container">
-      <h2 className="text-center py-5">Category Products</h2>
+    <div className="category-products-page">
+      <section className="container">
+        <h2 className="text-center py-5">Category Products</h2>
 
-      <div className="product-card-container pb-5">
-        {categoryProducts.map((product, index) => (
-          <ProductCard
-            key={index}
+        <div className="product-card-container pb-5">
+          {categoryProducts.map((product, index) => (
+            <ProductCard
+              key={index}
+              product={product}
+              setProduct={setProduct}
+              setModalShow={setModalShow}
+            ></ProductCard>
+          ))}
+        </div>
+
+        {/* If product is true, then show the Modal */}
+        {product && (
+          <BookingModal
+            show={modalShow}
             product={product}
             setProduct={setProduct}
-            setModalShow={setModalShow}
-          ></ProductCard>
-        ))}
-      </div>
-
-      {/* If product is true, then show the Modal */}
-      {product && (
-        <BookingModal
-          show={modalShow}
-          product={product}
-          setProduct={setProduct}
-        ></BookingModal>
-      )}
-    </section>
+          ></BookingModal>
+        )}
+      </section>
+    </div>
   );
 };
 

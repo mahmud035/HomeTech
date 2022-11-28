@@ -1,3 +1,8 @@
+.category-products-page {
+  background-color: #1a374d;
+  color: #fff;
+}
+
 .product-card-container {
   display: grid;
   grid-template-columns: 720px;
