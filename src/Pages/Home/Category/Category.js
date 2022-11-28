@@ -1,34 +1,43 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Loading from '../../Shared/Loading/Loading';
 import CategoryCard from '../CategoryCard/CategoryCard';
 import './Category.css';
+import axios from 'axios';
 
 const Category = () => {
+  const [categories, setCategories] = useState([]);
+
   const url = 'https://hometech-server-side.vercel.app/categories';
-  const {
-    isLoading,
-    isError,
-    data: categories = [],
-    error,
-  } = useQuery({
-    queryKey: ['categories'],
-    queryFn: async () => {
-      const res = await fetch(url);
-      const data = await res.json();
-      return data;
-    },
-  });
 
-  if (isLoading) {
-    return <Loading></Loading>;
-  }
+  useEffect(() => {
+    axios.get(url).then((res) => setCategories(res.data));
+  }, []);
 
-  if (isError) {
-    return <h1>{error.message}</h1>;
-  }
+  //* Using TanStack Query
+  // const {
+  //   isLoading,
+  //   isError,
+  //   data: categories = [],
+  //   error,
+  // } = useQuery({
+  //   queryKey: ['categories'],
+  //   queryFn: async () => {
+  //     const res = await fetch(url);
+  //     const data = await res.json();
+  //     return data;
+  //   },
+  // });
 
-  // console.log(categories);
+  // if (isLoading) {
+  //   return <Loading></Loading>;
+  // }
+
+  // if (isError) {
+  //   return <h1>{error.message}</h1>;
+  // }
+
+  console.log(categories);
 
   return (
     <div className="category-section pt-3 pb-5">
