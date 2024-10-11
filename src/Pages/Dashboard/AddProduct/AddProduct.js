@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import './AddProduct.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../context/AuthProvider';
-import { useNavigate } from 'react-router-dom';
 import useSetTitle from '../../../hooks/useSetTitle';
+import './AddProduct.css';
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
@@ -31,10 +31,7 @@ const AddProduct = () => {
   const postedTime = date.toLocaleTimeString('en-us', options);
 
   const handleAddProduct = (data) => {
-    // console.log(data);
-
     const image = data.image[0];
-    // console.log(image);
 
     //* Image Upload to Imgbb Server
     const formData = new FormData();
@@ -45,7 +42,6 @@ const AddProduct = () => {
     fetch(url, { method: 'POST', body: formData })
       .then((res) => res.json())
       .then((imageData) => {
-        // console.log(imageData);
         if (imageData.success) {
           const imageURL = imageData?.data?.display_url;
 
@@ -68,8 +64,6 @@ const AddProduct = () => {
             salesStatus: 'available',
           };
 
-          // console.log(product);
-
           fetch('https://hometech-server-side.vercel.app/products', {
             method: 'POST',
             headers: {
@@ -79,7 +73,6 @@ const AddProduct = () => {
           })
             .then((res) => res.json())
             .then((data) => {
-              // console.log(data);
               if (data.acknowledged) {
                 toast.success('Product Added Successfully');
                 navigate('/dashboard/myproducts');

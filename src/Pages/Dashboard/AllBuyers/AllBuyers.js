@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import './AllBuyer.css';
 import React from 'react';
+import useSetTitle from '../../../hooks/useSetTitle';
 import Loading from '../../Shared/Loading/Loading';
 import AllBuyersCard from '../AllBuyersCard/AllBuyersCard';
-import useSetTitle from '../../../hooks/useSetTitle';
+import './AllBuyer.css';
 
 const AllBuyers = () => {
   useSetTitle('All Buyers');
@@ -44,9 +44,9 @@ const AllBuyers = () => {
       </h1>
 
       <div className="all-buyers-card-container">
-        {buyers.map((buyer, index) => (
+        {buyers.map((buyer) => (
           <AllBuyersCard
-            key={index}
+            key={buyer._id}
             buyer={buyer}
             refetch={refetch}
           ></AllBuyersCard>

@@ -29,20 +29,16 @@ const Login = () => {
   const location = useLocation();
 
   const from = location?.state?.from?.pathname || '/';
-  console.log(from);
 
   const handleLogin = (data, e) => {
     e.preventDefault();
 
-    console.log(data);
     const email = data.email;
     const password = data.password;
 
     //* Sign In
     signIn(email, password)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
         toast.success('Logged in successfully');
 
         setLoginUserEmail(email);
@@ -53,9 +49,7 @@ const Login = () => {
       });
   };
 
-  // console.log(userEmail);
   const handlePasswordReset = () => {
-    console.log(loginUserEmail);
     passwordReset(loginUserEmail)
       .then(() => {
         toast.info('Please check your email to reset your password');
@@ -109,9 +103,9 @@ const Login = () => {
                       'Password must be at least 6 characters (one special case, one digit, one lowercase letter)',
                   },
                   pattern: {
-                    value: /(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                    value: /(?=.*[!@#$&*])(?=.*\d)(?=.*[a-z])/,
                     message:
-                      'Password must be one special case, one digit, one lowercase letter',
+                      'Password must include one special character, one digit, and one lowercase letter',
                   },
                 })}
                 type="password"

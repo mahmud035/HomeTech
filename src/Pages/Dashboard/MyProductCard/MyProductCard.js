@@ -5,7 +5,6 @@ import './MyProductCard.css';
 
 const MyProductCard = ({ product, refetch }) => {
   const { _id, name, image, salesStatus, resalePrice, isAdvertise } = product;
-  // console.log(product);
 
   const handleAdvertisedProduct = (id) => {
     fetch(`https://hometech-server-side.vercel.app/seller/products/${id}`, {
@@ -16,7 +15,6 @@ const MyProductCard = ({ product, refetch }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount) {
           toast.info('Product advertising completed');
           refetch();
@@ -30,7 +28,6 @@ const MyProductCard = ({ product, refetch }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.deletedCount > 0) {
           toast.info('Product Deleted Successfully');
           refetch();

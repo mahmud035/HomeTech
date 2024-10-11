@@ -1,7 +1,7 @@
 import React from 'react';
-import './ReportedItemCard.css';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
 import { toast } from 'react-toastify';
+import './ReportedItemCard.css';
 
 const ReportedItemCard = ({ reporteditem, refetch }) => {
   const { _id, name, image } = reporteditem;
@@ -12,7 +12,6 @@ const ReportedItemCard = ({ reporteditem, refetch }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.deletedCount > 0) {
           toast.success(`Product ${name.toUpperCase()} deleted successfully`);
           refetch();

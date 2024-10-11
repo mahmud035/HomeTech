@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
-import './BookingModal.css';
-import { AiFillCloseCircle } from 'react-icons/ai';
-import { AuthContext } from '../../../context/AuthProvider';
 import { useForm } from 'react-hook-form';
+import { AiFillCloseCircle } from 'react-icons/ai';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../../../context/AuthProvider';
 
 const BookingModal = ({ show, product, setProduct }) => {
   const { user } = useContext(AuthContext);
@@ -16,8 +15,6 @@ const BookingModal = ({ show, product, setProduct }) => {
   } = useForm();
 
   const handleBooking = (data) => {
-    // console.log(data);
-
     const booking = {
       image: image,
       productName: data.productName,
@@ -27,8 +24,6 @@ const BookingModal = ({ show, product, setProduct }) => {
       phone: data.phone,
       meetingLocation: data.meetingLocation,
     };
-
-    console.log(booking);
 
     fetch('https://hometech-server-side.vercel.app/bookings', {
       method: 'POST',

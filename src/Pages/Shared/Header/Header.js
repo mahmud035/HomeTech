@@ -1,22 +1,21 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
-import './Header.css';
+import { Button, Dropdown, DropdownButton, Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import logo from '../../../assets/images/logo.png';
-import { Link, NavLink } from 'react-router-dom';
-import { AuthContext } from '../../../context/AuthProvider';
-import { Button, Dropdown, DropdownButton, Image } from 'react-bootstrap';
-import { FaUserCircle } from 'react-icons/fa';
-import { toast } from 'react-toastify';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import { useQuery } from '@tanstack/react-query';
+import { FaUserCircle } from 'react-icons/fa';
+import { Link, NavLink } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import logo from '../../../assets/images/logo.png';
+import { AuthContext } from '../../../context/AuthProvider';
+import './Header.css';
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
-  // const [accountType, setAccountType] = useState('User');
 
   const url = `https://hometech-server-side.vercel.app/users/${user?.email}`;
   const { data: savedUser = {}, refetch } = useQuery({
@@ -27,12 +26,10 @@ const Header = () => {
         const data = await res.json();
         return data;
       } catch (error) {
-        console.log('Error:', error);
+        console.error('Error:', error);
       }
     },
   });
-
-  // console.log(savedUser);
 
   const handleSellerAccount = () => {
     fetch(
@@ -43,7 +40,6 @@ const Header = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.acknowledged) {
           refetch();
           toast.success('Switch as a Seller account');
@@ -114,11 +110,7 @@ const Header = () => {
                     Home
                   </NavLink>
                   <NavLink to="/blog">Blog</NavLink>
-                  {user?.email && (
-                    <>
-                      <NavLink to="/dashboard">Dashboard</NavLink>
-                    </>
-                  )}
+                  {user?.email && <NavLink to="/dashboard">Dashboard</NavLink>}
                 </Nav>
 
                 <Nav className="user-profile-and-logout mt-lg-0">
@@ -126,19 +118,17 @@ const Header = () => {
                     <>
                       <Link to="/profile">
                         {user?.photoURL ? (
-                          <>
-                            <OverlayTrigger
-                              key="bottom"
-                              placement="bottom"
-                              overlay={<Tooltip>{user?.displayName}</Tooltip>}
-                            >
-                              <Image
-                                roundedCircle
-                                src={user?.photoURL}
-                                style={{ width: '40px', height: '40px' }}
-                              ></Image>
-                            </OverlayTrigger>
-                          </>
+                          <OverlayTrigger
+                            key="bottom"
+                            placement="bottom"
+                            overlay={<Tooltip>{user?.displayName}</Tooltip>}
+                          >
+                            <Image
+                              roundedCircle
+                              src={user?.photoURL}
+                              style={{ width: '40px', height: '40px' }}
+                            ></Image>
+                          </OverlayTrigger>
                         ) : (
                           <FaUserCircle size={36} title={user?.displayName} />
                         )}
@@ -149,35 +139,29 @@ const Header = () => {
                         title={savedUser?.role}
                         className="border-0 fw-semibold "
                       >
-                        <>
-                          <OverlayTrigger
-                            key="bottom"
-                            placement="bottom"
-                            overlay={
-                              <Tooltip>{'Default account type'}</Tooltip>
-                            }
-                          >
-                            <Dropdown.Item>User</Dropdown.Item>
-                          </OverlayTrigger>
-                        </>
+                        <OverlayTrigger
+                          key="bottom"
+                          placement="bottom"
+                          overlay={<Tooltip>{'Default account type'}</Tooltip>}
+                        >
+                          <Dropdown.Item>User</Dropdown.Item>
+                        </OverlayTrigger>
 
-                        <>
-                          <OverlayTrigger
-                            key="bottom"
-                            placement="bottom"
-                            overlay={
-                              <Tooltip>{'Use account as a Seller'}</Tooltip>
-                            }
+                        <OverlayTrigger
+                          key="bottom"
+                          placement="bottom"
+                          overlay={
+                            <Tooltip>{'Use account as a Seller'}</Tooltip>
+                          }
+                        >
+                          <Dropdown.Item
+                            onClick={() => {
+                              handleSellerAccount();
+                            }}
                           >
-                            <Dropdown.Item
-                              onClick={() => {
-                                handleSellerAccount();
-                              }}
-                            >
-                              Seller
-                            </Dropdown.Item>
-                          </OverlayTrigger>
-                        </>
+                            Seller
+                          </Dropdown.Item>
+                        </OverlayTrigger>
                       </DropdownButton>
 
                       <Link to="/login">
@@ -221,8 +205,3 @@ const Header = () => {
 };
 
 export default Header;
-
-//  bg = 'dark';
-//  variant = 'dark';
-
-// navbar-dark bg-dark

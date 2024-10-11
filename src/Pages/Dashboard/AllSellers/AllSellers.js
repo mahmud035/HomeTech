@@ -40,9 +40,9 @@ const AllSellers = () => {
       </h1>
 
       <div className="all-sellers-card-container">
-        {sellers.map((seller, index) => (
+        {sellers.map((seller) => (
           <AllSellersCard
-            key={index}
+            key={seller._id}
             seller={seller}
             refetch={refetch}
           ></AllSellersCard>

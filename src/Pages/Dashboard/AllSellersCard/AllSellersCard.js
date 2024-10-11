@@ -1,11 +1,10 @@
 import React from 'react';
-import './AllSellersCard.css';
+import { Button } from 'react-bootstrap';
 import { FaUser } from 'react-icons/fa';
-import { MdEmail } from 'react-icons/md';
+import { MdEmail, MdVerifiedUser } from 'react-icons/md';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
 import { toast } from 'react-toastify';
-import { Button } from 'react-bootstrap';
-import { MdVerifiedUser } from 'react-icons/md';
+import './AllSellersCard.css';
 
 const AllSellersCard = ({ seller, refetch }) => {
   const { _id, name, image, email } = seller;
@@ -28,9 +27,7 @@ const AllSellersCard = ({ seller, refetch }) => {
             }
           )
             .then((res) => res.json())
-            .then((data) => {
-              console.log(data);
-            });
+            .then((data) => {});
         }
       });
   };
@@ -41,7 +38,6 @@ const AllSellersCard = ({ seller, refetch }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.deletedCount > 0) {
           toast.success(`Seller ${name} deleted successfully`);
           refetch();
@@ -77,7 +73,7 @@ const AllSellersCard = ({ seller, refetch }) => {
 
       <Button
         onClick={() => handleVerifySeller(_id)}
-        disabled={seller?.verified ? true : false}
+        disabled={seller.verified}
         className="mt-4 btn-register fw-semibold"
         variant="primary"
         size="sm"

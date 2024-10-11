@@ -37,7 +37,7 @@ const AdvertiseItems = () => {
             <div className="text-center ">
               <h2 className="fw-bold">
                 Latest
-                <span style={{ color: 'aqua' }}> Promotions</span>
+                <span style={{ color: 'aqua' }}>Promotions</span>
               </h2>
               <p>
                 Checkout the latest & upcoming promotions and offers at HomeTech
@@ -45,9 +45,9 @@ const AdvertiseItems = () => {
             </div>
 
             <div className="advertise-items-card-container py-5">
-              {advertiseItems.map((advertiseItem, index) => (
+              {advertiseItems.map((advertiseItem) => (
                 <AdvertiseItemCard
-                  key={index}
+                  key={advertiseItem._id}
                   advertiseItem={advertiseItem}
                 ></AdvertiseItemCard>
               ))}

@@ -50,31 +50,27 @@ const MyProducts = () => {
 
       <div>
         {products.length === 0 ? (
-          <>
-            <h3 className="d-flex flex-column gap-3 justify-content-center align-items-center min-vh-100">
-              Oops! You haven't add any product!!
-              <Link to="/dashboard/addproduct">
-                <Button
-                  variant="info"
-                  className="btn-register text-white fw-semibold"
-                >
-                  Add New Product
-                </Button>
-              </Link>
-            </h3>
-          </>
+          <h3 className="d-flex flex-column gap-3 justify-content-center align-items-center min-vh-100">
+            Oops! You haven't add any product!!
+            <Link to="/dashboard/addproduct">
+              <Button
+                variant="info"
+                className="btn-register text-white fw-semibold"
+              >
+                Add New Product
+              </Button>
+            </Link>
+          </h3>
         ) : (
-          <>
-            <div className="my-product-card-container pb-5">
-              {products.map((product, index) => (
-                <MyProductCard
-                  key={index}
-                  product={product}
-                  refetch={refetch}
-                ></MyProductCard>
-              ))}
-            </div>
-          </>
+          <div className="my-product-card-container pb-5">
+            {products.map((product) => (
+              <MyProductCard
+                key={product._id}
+                product={product}
+                refetch={refetch}
+              ></MyProductCard>
+            ))}
+          </div>
         )}
       </div>
     </div>

@@ -5,7 +5,6 @@ import './OrderProductCard.css';
 
 const OrderProductCard = ({ order }) => {
   const { _id, image, productName, resalePrice } = order;
-  console.log(order);
 
   return (
     <div>

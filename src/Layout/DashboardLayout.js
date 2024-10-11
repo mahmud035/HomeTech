@@ -1,22 +1,21 @@
 import React, { useContext } from 'react';
-import Header from '../Pages/Shared/Header/Header';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { Link, Outlet } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import useAdmin from '../hooks/useAdmin';
-import { AuthContext } from '../context/AuthProvider';
-import useSeller from '../hooks/useSeller';
-import './DashboardLayout.css';
-import { FaUserCircle } from 'react-icons/fa';
-import { BsCartCheck } from 'react-icons/bs';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import { AiOutlineAppstoreAdd } from 'react-icons/ai';
-import { TbBrandProducthunt } from 'react-icons/tb';
+import { BsCartCheck } from 'react-icons/bs';
+import { FaUserCircle } from 'react-icons/fa';
 import { MdReportProblem } from 'react-icons/md';
-import { RiUserStarLine } from 'react-icons/ri';
-import { RiUserSettingsLine } from 'react-icons/ri';
+import { RiUserSettingsLine, RiUserStarLine } from 'react-icons/ri';
+import { TbBrandProducthunt } from 'react-icons/tb';
+import { Link, Outlet } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider';
+import useAdmin from '../hooks/useAdmin';
+import useSeller from '../hooks/useSeller';
+import Header from '../Pages/Shared/Header/Header';
+import './DashboardLayout.css';
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);

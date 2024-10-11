@@ -8,7 +8,6 @@ const useToken = (email) => {
       fetch(`https://hometech-server-side.vercel.app/jwt?email=${email}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           if (data.accessToken2) {
             localStorage.setItem('accessToken2', data.accessToken2);
             setToken(data.accessToken2);

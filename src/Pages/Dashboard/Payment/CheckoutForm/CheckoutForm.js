@@ -1,22 +1,16 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import './CheckoutForm.css';
 
 const CheckoutForm = ({ product }) => {
   const [cardError, setCardError] = useState('');
-  const [success, setSuccess] = useState('');
   const [processing, setProcessing] = useState(false);
-  const [transactionId, setTransactionId] = useState('');
   const [clientSecret, setClientSecret] = useState('');
-
-  const navigate = useNavigate();
 
   const stripe = useStripe();
   const elements = useElements();
   const { _id, resalePrice, userName, userEmail, productName } = product;
-  console.log(product);
 
   useEffect(() => {
     fetch('https://hometech-server-side.vercel.app/create-payment-intent', {
@@ -44,19 +38,17 @@ const CheckoutForm = ({ product }) => {
       return;
     }
 
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
+    const { error } = await stripe.createPaymentMethod({
       type: 'card',
       card,
     });
 
     if (error) {
-      // console.log(error);
       setCardError(error.message);
     } else {
       setCardError('');
     }
 
-    setSuccess(''); // reset state defaultValue
     setProcessing(true); // change state defaultValue
 
     const { paymentIntent, error: confirmError } =
@@ -75,11 +67,7 @@ const CheckoutForm = ({ product }) => {
       return;
     }
 
-    console.log('paymentIntent', paymentIntent);
-
     if (paymentIntent.status === 'succeeded') {
-      // console.log('card info', card);
-
       const payment = {
         resalePrice,
         transactionId: paymentIntent.id,
@@ -98,10 +86,7 @@ const CheckoutForm = ({ product }) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           if (data.insertedId) {
-            setSuccess('Congrats! your payment is completed');
-            setTransactionId(paymentIntent.id);
             toast.success('Congrats! your payment is completed');
 
             fetch(
@@ -111,11 +96,7 @@ const CheckoutForm = ({ product }) => {
               }
             )
               .then((res) => res.json())
-              .then((data) => {
-                console.log(data);
-              });
-
-            // navigate('/dashboard');
+              .then((data) => {});
           }
         });
     }
@@ -155,16 +136,6 @@ const CheckoutForm = ({ product }) => {
       <p className="text-danger text-center pt-2 " style={{ color: 'aqua' }}>
         {cardError}
       </p>
-
-      {/* {success && (
-        <div>
-          <p className="text-green-500">{success}</p>
-          <p>
-            Your transactionId:
-            <span className="font-bold">{transactionId}</span>
-          </p>
-        </div>
-      )} */}
     </>
   );
 };

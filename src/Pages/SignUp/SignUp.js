@@ -24,7 +24,6 @@ const SignUp = () => {
 
   const [createdUserEmail, setCreatedUserEmail] = useState('');
   const [token] = useToken(createdUserEmail);
-  console.log(token);
 
   const navigate = useNavigate();
   useSetTitle('Sign Up');
@@ -38,9 +37,7 @@ const SignUp = () => {
   }, []);
 
   const handleSignUp = (data) => {
-    // console.log(data);
     const image = data.image[0];
-    // console.log(image);
 
     //* Image Upload to Imgbb Server
     const formData = new FormData();
@@ -51,15 +48,12 @@ const SignUp = () => {
     fetch(url, { method: 'POST', body: formData })
       .then((res) => res.json())
       .then((imageData) => {
-        // console.log(imageData);
         if (imageData.success) {
           const imageURL = imageData?.data?.display_url;
 
           //* Create User
           createUser(data.email, data.password)
             .then((result) => {
-              const user = result.user;
-              console.log(user);
               toast.success('Account Created Successfully');
 
               const userInfo = {
@@ -78,7 +72,6 @@ const SignUp = () => {
                 });
             })
             .catch((error) => {
-              console.log(error);
               toast.error(error.message.slice(22, -2));
             });
         }
@@ -91,7 +84,6 @@ const SignUp = () => {
 
   const saveUser = (name, email, imageURL) => {
     const user = { name, email, image: imageURL, role: 'User' };
-    console.log(user);
 
     fetch('https://hometech-server-side.vercel.app/users', {
       method: 'POST',
@@ -102,7 +94,6 @@ const SignUp = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log('SavedUser:', data);
         if (data.acknowledged) {
           // set createdUserEmail into state Variable
           setCreatedUserEmail(email);
@@ -114,7 +105,6 @@ const SignUp = () => {
     googleSignIn()
       .then((result) => {
         const user = result.user;
-        console.log(user);
         toast.success('Account Created successfully');
 
         // JWT Token
@@ -131,7 +121,6 @@ const SignUp = () => {
     githubSignIn()
       .then((result) => {
         const user = result.user;
-        console.log(user);
         toast.success('Account Created successfully');
 
         // JWT Token
@@ -193,7 +182,7 @@ const SignUp = () => {
                       'Password must be at least 6 characters (one special case, one digit, one lowercase letter)',
                   },
                   pattern: {
-                    value: /(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                    value: /(?=.*[!@#$&*])(?=.*\d)(?=.*[a-z])/,
                     message:
                       'Password must be one special case, one digit, one lowercase letter',
                   },

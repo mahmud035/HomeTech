@@ -1,11 +1,10 @@
 import React, { useContext, useEffect } from 'react';
-import './ProductCard.css';
-import { MdVerifiedUser } from 'react-icons/md';
 import { Button } from 'react-bootstrap';
-import { MdReportProblem } from 'react-icons/md';
+import { MdReportProblem, MdVerifiedUser } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../context/AuthProvider';
 import useAdmin from '../../../hooks/useAdmin';
+import './ProductCard.css';
 
 const ProductCard = ({ product, setProduct, setModalShow }) => {
   const { user } = useContext(AuthContext);
@@ -34,7 +33,6 @@ const ProductCard = ({ product, setProduct, setModalShow }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
         if (data.modifiedCount > 0) {
           toast.success('We have accepted your report');
         }

@@ -4,16 +4,12 @@ import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 import useSetTitle from '../../../hooks/useSetTitle';
-// import useAdmin from '../../../hooks/useAdmin';
-// import useSeller from '../../../hooks/useSeller';
 import Loading from '../../Shared/Loading/Loading';
 import OrderProductCard from '../OrderProductCard/OrderProductCard';
 import './MyOrders.css';
 
 const MyOrders = () => {
   const { user } = useContext(AuthContext);
-  // const [isAdmin] = useAdmin(user?.email);
-  // const [isSeller] = useSeller(user?.email);
   useSetTitle('My Orders');
 
   const url = `https://hometech-server-side.vercel.app/orders?email=${user?.email}`;
@@ -44,23 +40,20 @@ const MyOrders = () => {
     return <div>{error.message}</div>;
   }
 
-  // console.log(orders);
   return (
     <div>
       {orders.length === 0 ? (
-        <>
-          <h3 className="d-flex flex-column gap-3 justify-content-center align-items-center min-vh-100">
-            Oops! You haven't order any product!!
-            <Link to="/">
-              <Button
-                variant="info"
-                className="btn-register text-white fw-semibold"
-              >
-                Shop Now
-              </Button>
-            </Link>
-          </h3>
-        </>
+        <h3 className="d-flex flex-column gap-3 justify-content-center align-items-center min-vh-100">
+          Oops! You haven't order any product!!
+          <Link to="/">
+            <Button
+              variant="info"
+              className="btn-register text-white fw-semibold"
+            >
+              Shop Now
+            </Button>
+          </Link>
+        </h3>
       ) : (
         <>
           <div className="py-5">

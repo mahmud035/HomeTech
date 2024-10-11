@@ -41,23 +41,19 @@ const ReportedItems = () => {
 
       <div>
         {reporteditems.length === 0 ? (
-          <>
-            <h3 className="d-flex flex-column gap-3 justify-content-center align-items-center min-vh-100">
-              No reported items found.
-            </h3>
-          </>
+          <h3 className="d-flex flex-column gap-3 justify-content-center align-items-center min-vh-100">
+            No reported items found.
+          </h3>
         ) : (
-          <>
-            <div className="reported-items-card-container">
-              {reporteditems.map((reporteditem, index) => (
-                <ReportedItemCard
-                  key={index}
-                  reporteditem={reporteditem}
-                  refetch={refetch}
-                ></ReportedItemCard>
-              ))}
-            </div>
-          </>
+          <div className="reported-items-card-container">
+            {reporteditems.map((reporteditem) => (
+              <ReportedItemCard
+                key={reporteditem._id}
+                reporteditem={reporteditem}
+                refetch={refetch}
+              ></ReportedItemCard>
+            ))}
+          </div>
         )}
       </div>
     </div>

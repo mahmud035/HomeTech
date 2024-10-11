@@ -1,8 +1,8 @@
 import React from 'react';
-import useSetTitle from '../../hooks/useSetTitle';
-import './Blog.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Table from 'react-bootstrap/Table';
+import useSetTitle from '../../hooks/useSetTitle';
+import './Blog.css';
 
 const Blog = () => {
   useSetTitle('Blog');
@@ -105,11 +105,8 @@ const Blog = () => {
           <Accordion.Body>
             Unit testing is a type of software testing where individual units or
             software components are tested. Its purpose is to validate that each
-            unit of code performs as expected.
-            <strong>
-              A unit can be anything you want it to be — a line of code, a
-              method, or a class.
-            </strong>
+            unit of code performs as expected. A unit can be anything you want
+            it to be — a line of code, a method, or a class.
             <br />
             <br />
             To justify any effort in business, there must be a positive impact

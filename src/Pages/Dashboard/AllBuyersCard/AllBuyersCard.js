@@ -1,10 +1,9 @@
 import React from 'react';
-import './AllBuyersCard.css';
-import { FaUser } from 'react-icons/fa';
+import { FaUser, FaUserCircle } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
-import { FaUserCircle } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import './AllBuyersCard.css';
 
 const AllBuyersCard = ({ buyer, refetch }) => {
   const { _id, name, image, email } = buyer;
@@ -15,7 +14,6 @@ const AllBuyersCard = ({ buyer, refetch }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.deletedCount > 0) {
           toast.success(`Buyer ${name.toUpperCase()} deleted successfully`);
           refetch();

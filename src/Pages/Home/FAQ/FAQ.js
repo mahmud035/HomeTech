@@ -1,13 +1,12 @@
-import React from 'react';
-import './FAQ.css';
 import Accordion from 'react-bootstrap/Accordion';
+import './Faq.css';
 
-const FAQ = () => {
+const FaqComponent = () => {
   return (
     <div className="faq-accordion-container">
       <h2 className="fw-bold pb-4">
         Frequently Asked
-        <span style={{ color: 'aqua' }}> Questions</span>
+        <span style={{ color: 'aqua' }}>Questions</span>
       </h2>
       <Accordion className="w-50 mx-auto accordion-content">
         <Accordion.Item eventKey="0">
@@ -57,4 +56,4 @@ const FAQ = () => {
   );
 };
 
-export default FAQ;
+export default FaqComponent;
