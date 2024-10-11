@@ -1,5 +1,4 @@
 import React from 'react';
-import './Loading.css';
 import { CirclesWithBar } from 'react-loader-spinner';
 
 const Loading = () => {

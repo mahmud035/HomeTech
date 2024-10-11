@@ -1,18 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
-import './SignUp.css';
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import { AuthContext } from '../../context/AuthProvider';
-import { Link, useNavigate } from 'react-router-dom';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import { FcGoogle } from 'react-icons/fc';
-import { BsGithub } from 'react-icons/bs';
-import useSetTitle from '../../hooks/useSetTitle';
+import Form from 'react-bootstrap/Form';
 import { useForm } from 'react-hook-form';
+import { BsGithub } from 'react-icons/bs';
+import { FcGoogle } from 'react-icons/fc';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../../context/AuthProvider';
+import useSetTitle from '../../hooks/useSetTitle';
 import useToken from '../../hooks/useToken';
-import Loading from '../Shared/Loading/Loading';
 import { setSocialLoginToken } from '../../setSocialLoginToken/setSocialLoginToken';
+import './SignUp.css';
 
 const SignUp = () => {
   const {
@@ -29,13 +28,6 @@ const SignUp = () => {
 
   const navigate = useNavigate();
   useSetTitle('Sign Up');
-
-  // FIXME: why loading isn't shown here?
-  useEffect(() => {
-    if (!createdUserEmail || !token) {
-      <Loading></Loading>;
-    }
-  }, [createdUserEmail, token]);
 
   if (token) {
     navigate('/');
