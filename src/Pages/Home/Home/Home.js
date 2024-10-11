@@ -3,7 +3,7 @@ import useSetTitle from '../../../hooks/useSetTitle';
 import AdvertiseItems from '../AdvertiseItems/AdvertiseItems';
 import Banner from '../Banner/Banner';
 import Category from '../Category/Category';
-import FaqComponent from '../FAQ/FAQ';
+import FaqComponent from '../Faq/Faq';
 import TopBrands from '../TopBrands/TopBrands';
 
 const Home = () => {
